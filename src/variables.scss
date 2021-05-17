@@ -1,0 +1,32 @@
+
+$mainColor : #2C2D76;
+$secondColor: #8083A4;
+$bgColor : #373AF5;
+$mainFontSize : 16px;
+
+
+@font-face {
+  font-family: 'Ubuntu-Bold';
+  src: url("./assets/fonts/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ubuntu-Regular';
+  src: url("./assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+%Ubuntu-Regular {
+  font-family: 'Ubuntu-Regular', sans-serif;
+  font-weight: 400;
+}
+
+%Ubuntu-Bold {
+  font-family: 'Ubuntu-Bold', sans-serif;
+  font-weight: 700;
+}

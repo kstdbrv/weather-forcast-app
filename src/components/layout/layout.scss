@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.main-title {
+  @extend %Ubuntu-Bold;
+  font-size: 32px;
+  color:#fff;
+  max-width: 244px;
+  margin: 0 auto;
+  padding-top: 32px;
+  h2:first-child {
+   text-align: left;
+  }
+  h2:last-child {
+    text-align: right;
+   }
+}
+

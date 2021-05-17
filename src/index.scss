@@ -1,0 +1,50 @@
+@import "~normalize.css";
+@import "./variables.scss";
+
+
+body {
+  @extend %Ubuntu-Regular;
+  font-size: $mainFontSize;
+  color: $mainColor;
+  width: 100%;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+.wrapper {
+  max-width: 995px;
+  padding: 0 20px; 
+  margin: 0 auto;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
