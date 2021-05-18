@@ -3,7 +3,7 @@
 
 
 body {
-  @extend %Ubuntu-Regular;
+  @extend %Ubuntu-Bold;
   font-size: $mainFontSize;
   color: $mainColor;
   width: 100%;
@@ -11,8 +11,8 @@ body {
   min-width: 320px;
 }
 
-.wrapper {
-  max-width: 995px;
+.container {
+  max-width: 1440px;
   padding: 0 20px; 
   margin: 0 auto;
 }

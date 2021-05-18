@@ -1,11 +1,11 @@
 @import "./variables.scss";
 
 .wrapper {
- height: 100vh;
+ height: 100%;
  width: 100%;
- background: url('./assets/images/forecast-bg-up.png') top right, 
-             url('./assets/images/forecast-bg-buttom.png') bottom left;
- background-size: 300px 100px, cover;
+ background: url('./assets/images/bg-up.svg') top right, 
+             url('./assets/images/bg-down.svg') bottom left;
+ /* background-size: 300px 100px, cover; */
  background-color: $bgColor;
  background-repeat: no-repeat;
 }
