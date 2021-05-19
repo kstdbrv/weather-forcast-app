@@ -38,7 +38,7 @@
     background-image: url('../../assets/images/select-arrow.svg');
     background-repeat: no-repeat, repeat;
     background-position: right 20px top 50%, 0 0;
-    background-size: .65em auto, 100%; 
+    background-size: .65em auto, 100%;
   }
   &__placeholder {
     margin-bottom: 33px;
@@ -48,38 +48,4 @@
     font-size: 16px;
     line-height: 24px;
   } 
-}
-
-.select select {
-	display: none;
-}
-
-.select {
-	position: relative;
-	margin: 30px 0;
-}
-
-.select--active {
-	z-index: 1;
-}
-
-.select--active ~ .select {
-	z-index: 0;
-}
-
-.select__options {
-	position: absolute;
-	top: 100%;
-	display: flex;
-	flex-direction: column;
-	visibility: hidden;
-	background: white;
-}
-
-.select--active .select__options {
-	visibility: visible;
-}
-
-.select__option--active {
-	font-weight: bold;
 }

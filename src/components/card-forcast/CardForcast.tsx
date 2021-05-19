@@ -10,6 +10,11 @@ const SITIES = [
   {},
 ]
 
+/* gettingData async = () => {
+  const api_url = await fetch(`/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${API key}
+  `)
+}
+ */
 const CardForcast: React.FC = () => {
 
   useEffect(() => {
@@ -25,7 +30,10 @@ const CardForcast: React.FC = () => {
       <h3 className="card-forcast__title">
         7 Days Forecast
       </h3>
-      <select data-custom-select-class="select" className="card-forcast__select">
+      <select
+        data-custom-select-class="select"
+        className="card-forcast__select"
+      >
         <option value='Select city'>
          Select city
         </option>
