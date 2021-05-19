@@ -2,7 +2,7 @@ import axios from '../../axios/axios';
 import { source } from '../../axios/axios';
 import { isCancel } from '../../axios/axios';
 import {
-  FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST,
+  FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST, GET_DATE
 } from './actionTypes';
 import {
   hideLoader, showLoader
@@ -41,13 +41,17 @@ export function fetch7DayForecast(lat, lon, part = '') {
   }
 }
 
-export function fetchPastForecast(lat, lon, part = '') {
+export function fetchPastForecast(lat, lon) {
   
-  return async dispatch => {
+  return async (dispatch, getState) => {
+
+    const { pastDate } = getState(); 
+    if (!pastDate) return; 
+
     try {
       dispatch(showLoader());
-
-      const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${API_KEY}`;
+let time
+      const url = `/timemachine?lat=${lat}&lon=${lon}&dt=${time}&appid=${API_KEY}`;
       const response = await axios.get(url, { cancelToken: source.token });
 
       dispatch({
@@ -69,4 +73,5 @@ export function fetchPastForecast(lat, lon, part = '') {
     }
   }
 }
+
 

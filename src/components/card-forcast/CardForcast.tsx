@@ -6,7 +6,7 @@ import SelectCity from '../select-city/SelectCity';
 
 const CardForcast: React.FC = () => {
   return (
-    <div className="card-forcast">
+    <article className="card-forcast">
       <h3 className="card-forcast__title">
         7 Days Forecast
       </h3>
@@ -20,7 +20,7 @@ const CardForcast: React.FC = () => {
         Fill in all the fields and
         the weather will be displayed
       </p>
-    </div>
+    </article>
   )
 }
 

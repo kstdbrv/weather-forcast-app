@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetch7DayForecast } from '../../store/actions/getWeather';
+import { fetchPastForecast } from '../../store/actions/getWeather';
 
 
 const CITIES = [
@@ -12,15 +12,7 @@ const CITIES = [
   { name: 'Краснодар', lat: '45.035470' },
 ]
 
-const SelectCity = () => {
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "/lib/select.js";
-    script.async = true;
-  
-    document.body.appendChild(script);
-  }, []);
+const SelectCityPast = () => {
 
   const dispatch = useDispatch();
 
@@ -29,15 +21,15 @@ const SelectCity = () => {
     let lat = e.target.value;
     switch (lat) {
      case '53.195873': // Самара
-      return dispatch(fetch7DayForecast(lat, lon = '50.100193'));
+      return dispatch(fetchPastForecast(lat, lon = '50.100193',));
      case '53.507836': // Тольятти
-      return dispatch(fetch7DayForecast(lat, lon = '49.420393'));
+      return dispatch(fetchPastForecast(lat, lon = '49.420393'));
      case '51.533557': // Саратов
-      return dispatch(fetch7DayForecast(lat, lon = '46.034257'));
+      return dispatch(fetchPastForecast(lat, lon = '46.034257'));
      case '55.796127': // Казань
-      return dispatch(fetch7DayForecast(lat, lon = '49.106405'));  
+      return dispatch(fetchPastForecast(lat, lon = '49.106405'));  
      case '45.035470': // Краснодар
-      return dispatch(fetch7DayForecast(lat, lon = '38.975313'));
+      return dispatch(fetchPastForecast(lat, lon = '38.975313'));
      default: return;
     }
   }
@@ -64,4 +56,4 @@ const SelectCity = () => {
   )
 }
 
-export default SelectCity;
+export default SelectCityPast;
