@@ -1,10 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import './Loader.scss'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import './loader.scss';
 
 const Loader = () => {
 
-  const loading = useSelector(state => state.app.isLoading)
+  const loading = useSelector(state => state.app.isLoading);
 
   if (!loading) {
    return null
@@ -28,4 +28,4 @@ const Loader = () => {
   }
 }
 
-export default Loader
+export default Loader;

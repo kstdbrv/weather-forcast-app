@@ -8,12 +8,14 @@ import {
   hideLoader, showLoader
 } from './app';
 
+
 const API_KEY = process.env.REACT_APP_API_REY;
 
-export function fetch7DayForecast({ lat, lon, part }) {
+export function fetch7DayForecast(lat, lon, part = '') {
 
   return async dispatch => {
     try {
+
       dispatch(showLoader());
 
       const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${API_KEY}`;
@@ -39,8 +41,8 @@ export function fetch7DayForecast({ lat, lon, part }) {
   }
 }
 
-export function fetchPastForecast({ lat, lon, part }) {
-
+export function fetchPastForecast(lat, lon, part = '') {
+  
   return async dispatch => {
     try {
       dispatch(showLoader());
