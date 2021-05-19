@@ -4,6 +4,7 @@ import {
 
 let initialState = {
   isLoading: false,
+  weatherData: null,
 }
 
 const appReducer = (state = initialState, action) => {

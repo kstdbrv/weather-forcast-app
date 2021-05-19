@@ -4,17 +4,12 @@ import Placeholder from '../../assets/images/placeholder.svg';
 
 
 const SITIES = [
-  {},
-  {},
-  {},
-  {},
+  { name: 'Самара', lat: '53.195873', lon: '50.100193' },
+  { name: 'Тольятти', lat: '53.507836', lon: '49.420393' },
+  { name: 'Саратов', lat: '51.533557', lon: '46.034257' },
+  { name: 'Краснодар', lat: '(45.035470', lon: '38.975313' },
 ]
 
-/* gettingData async = () => {
-  const api_url = await fetch(`/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${API key}
-  `)
-}
- */
 const CardForcast: React.FC = () => {
 
   useEffect(() => {
