@@ -3,4 +3,6 @@ export const HIDE_LOADER = 'APP/HIDE_LOADER';
 
 export const FETCH_7DAYSFORECAST = 'FETCH_7DAYSFORECAST';
 export const FETCH_PAST_FORECAST = 'FETCH_PAST_FORECAST';
+
 export const GET_DATE = 'GET_DATE';
+export const GET_LOCATION = 'GET_LOCATION';

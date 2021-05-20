@@ -2,14 +2,14 @@ import { combineReducers } from 'redux';
 import appReducer from './app';
 import forecastDataReducer from './forecastData';
 import pastDataReducer from './pastData';
-import pastDateReducer from './pastDate';
+import pastCardReducer from './pastCard';
 
 
 const rootReducer = combineReducers({
   app: appReducer,
   forecastData: forecastDataReducer,
   pastData: pastDataReducer,
-  pastDate: pastDateReducer 
+  pastCardInfo: pastCardReducer 
 })
 
 export default rootReducer;

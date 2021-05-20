@@ -1,6 +1,6 @@
 import React from 'react';
 import Placeholder from '../../assets/images/placeholder.svg';
-import SelectCity from '../select-city/SelectCity';
+import SelectCityPast from '../select-city-past/selectCityPast';
 import SelectDate from '../select-date/SelectDate';
 
 
@@ -10,7 +10,7 @@ const CardPast: React.FC = () => {
       <h3 className="card-forcast__title">
         Forecast for a Date in the Past
       </h3>
-      <SelectCity />
+      <SelectCityPast />
       <SelectDate />
       <img
         className="card-forcast__placeholder"

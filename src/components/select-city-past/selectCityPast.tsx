@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchPastForecast } from '../../store/actions/getWeather';
+import { getLocation } from '../../store/actions/getLocation';
 
 
 const CITIES = [
@@ -21,15 +21,15 @@ const SelectCityPast = () => {
     let lat = e.target.value;
     switch (lat) {
      case '53.195873': // Самара
-      return dispatch(fetchPastForecast(lat, lon = '50.100193',));
+      return dispatch(getLocation(lat, lon = '50.100193',));
      case '53.507836': // Тольятти
-      return dispatch(fetchPastForecast(lat, lon = '49.420393'));
+      return dispatch(getLocation(lat, lon = '49.420393'));
      case '51.533557': // Саратов
-      return dispatch(fetchPastForecast(lat, lon = '46.034257'));
+      return dispatch(getLocation(lat, lon = '46.034257'));
      case '55.796127': // Казань
-      return dispatch(fetchPastForecast(lat, lon = '49.106405'));  
+      return dispatch(getLocation(lat, lon = '49.106405'));  
      case '45.035470': // Краснодар
-      return dispatch(fetchPastForecast(lat, lon = '38.975313'));
+      return dispatch(getLocation(lat, lon = '38.975313'));
      default: return;
     }
   }

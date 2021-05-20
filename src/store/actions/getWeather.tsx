@@ -41,17 +41,23 @@ export function fetch7DayForecast(lat, lon, part = '') {
   }
 }
 
-export function fetchPastForecast(lat, lon) {
+export function fetchPastForecast() {
   
   return async (dispatch, getState) => {
 
-    const { pastDate } = getState(); 
-    if (!pastDate) return; 
+    const { pastCardInfo } = getState();
+    
+    let unixDate = pastCardInfo.unixDate;
+    let cityLocation = pastCardInfo.cityLocation;
 
+    if (unixDate === null || cityLocation === null) return;
+    
+    const { lat, lon } = pastCardInfo.cityLocation;
+    
     try {
       dispatch(showLoader());
-let time
-      const url = `/timemachine?lat=${lat}&lon=${lon}&dt=${time}&appid=${API_KEY}`;
+
+      const url = `/timemachine?lat=${lat}&lon=${lon}&dt=1621422000&appid=${API_KEY}`;
       const response = await axios.get(url, { cancelToken: source.token });
 
       dispatch({

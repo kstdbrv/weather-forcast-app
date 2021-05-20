@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getDate } from '../../store/actions/getDate';
+import { fetchPastForecast } from '../../store/actions/getWeather';
 
 
 const SelectDate = () => {
@@ -13,9 +14,10 @@ const SelectDate = () => {
   const dispatch = useDispatch();
 
   const handleChange = e => { 
-    let date = e.target.value;
-
-    dispatch(getDate(date));
+    const date = e.target.value;
+    const unixDate = new Date(`${date}`).getTime() / 1000;
+    dispatch(getDate(unixDate));
+    dispatch(fetchPastForecast());
   }
 
   return (

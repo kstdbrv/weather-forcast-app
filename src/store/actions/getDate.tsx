@@ -1,8 +1,8 @@
 import { GET_DATE } from './actionTypes';
 
-export function getDate(date) {
+export function getDate(unixDate) {
   return {
     type: GET_DATE,
-    date
+    unixDate
  }
 }
