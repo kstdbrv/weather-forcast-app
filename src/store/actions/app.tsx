@@ -1,15 +1,28 @@
 import {
-  SHOW_LOADER, HIDE_LOADER
+  SHOW_LOADER_FORECAST, HIDE_LOADER_PAST,
+  HIDE_LOADER_FORECAST, SHOW_LOADER_PAST,
 } from './actionTypes'
 
-export function showLoader() {
+export function showLoaderForcast() {
   return {
-    type: SHOW_LOADER
+    type: SHOW_LOADER_FORECAST
   }
 }
 
-export function hideLoader() {
+export function hideLoaderForcast() {
   return {
-    type: HIDE_LOADER
+    type: HIDE_LOADER_FORECAST
+  }
+}
+
+export function showLoaderPast() {
+  return {
+    type: SHOW_LOADER_PAST
+  }
+}
+
+export function hideLoaderPast() {
+  return {
+    type: HIDE_LOADER_PAST
   }
 }

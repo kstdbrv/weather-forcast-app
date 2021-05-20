@@ -2,10 +2,11 @@ import axios from '../../axios/axios';
 import { source } from '../../axios/axios';
 import { isCancel } from '../../axios/axios';
 import {
-  FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST, GET_DATE
+  FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST
 } from './actionTypes';
 import {
-  hideLoader, showLoader
+  hideLoaderPast, showLoaderForcast,
+  showLoaderPast, hideLoaderForcast,
 } from './app';
 
 
@@ -16,9 +17,9 @@ export function fetch7DayForecast(lat, lon, part = '') {
   return async dispatch => {
     try {
 
-      dispatch(showLoader());
+      dispatch(showLoaderForcast());
 
-      const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${API_KEY}`;
+      const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=metric&appid=${API_KEY}`;
       const response = await axios.get(url, { cancelToken: source.token });
 
       dispatch({
@@ -26,16 +27,16 @@ export function fetch7DayForecast(lat, lon, part = '') {
         data: response.data
       });
 
-      dispatch(hideLoader());
+      dispatch(hideLoaderForcast());
 
     } catch (thrown) {
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
-        dispatch(hideLoader());
+        dispatch(hideLoaderForcast());
       } else {
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
-        dispatch(hideLoader());
+        dispatch(hideLoaderForcast());
       }
     }
   }
@@ -52,12 +53,12 @@ export function fetchPastForecast() {
 
     if (unixDate === null || cityLocation === null) return;
     
-    const { lat, lon } = pastCardInfo.cityLocation;
+    const { lat, lon } = cityLocation;
     
     try {
-      dispatch(showLoader());
+      dispatch(showLoaderPast());
 
-      const url = `/timemachine?lat=${lat}&lon=${lon}&dt=1621422000&appid=${API_KEY}`;
+      const url = `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}`;
       const response = await axios.get(url, { cancelToken: source.token });
 
       dispatch({
@@ -65,16 +66,16 @@ export function fetchPastForecast() {
         data: response.data
       });
 
-      dispatch(hideLoader());
+      dispatch(hideLoaderPast());
 
     } catch (thrown) {
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
-        dispatch(hideLoader());
+        dispatch(hideLoaderPast());
       } else {
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
-        dispatch(hideLoader());
+        dispatch(hideLoaderPast());
       }
     }
   }

@@ -1,8 +1,6 @@
 import { FETCH_PAST_FORECAST } from '../actions/actionTypes';
 
-let initialState = {
-  pastForecast: null,
-}
+let initialState = {};
 
 const pastDataReducer = (state = initialState, action) => {
   switch (action.type) {
