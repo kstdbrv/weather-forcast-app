@@ -13,11 +13,13 @@ const CardPast = () => {
 
   return (
     <article className="card-forcast">
-      <h3 className="card-forcast__title">
+      <h3 className="card-forcast__title card-forcast__title_left">
         Forecast for a Date in the Past
       </h3>
-      <SelectCityPast />
-      <SelectDate />
+      <form className="card-forcast__select select-past">
+        <SelectCityPast />
+        <SelectDate />
+      </form>
       {
         loading ? <Loader /> : Object.keys(data).length ?
         <UnitPast /> : <Placeholder />

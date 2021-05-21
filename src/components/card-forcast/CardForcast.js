@@ -22,7 +22,7 @@ const CardForcast = () => {
           <img
            className="card-forcast__placeholder"
            src={Placeholder}
-           alt="картинка вместо погоды"
+           alt="placeholder of weather"
           />
           <p className="card-forcast__text">
             Fill in all the fields and
@@ -30,7 +30,6 @@ const CardForcast = () => {
           </p>    
         </React.Fragment>
       }
-      
     </article>
   )
 }

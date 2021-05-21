@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './select-date.scss';
 import { useDispatch } from 'react-redux';
 import { getDate } from '../../store/actions/getDate';
 import { fetchPastForecast } from '../../store/actions/getWeather';
@@ -22,7 +23,7 @@ const SelectDate = () => {
 
   return (
     <input
-      className="card-forcast__select"
+      className="input-style select-past__date"
       type="date"
       onChange={handleChange}
     />

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './select-city.scss';
 import { useDispatch } from 'react-redux';
 import { fetch7DayForecast } from '../../store/actions/getWeather';
 
@@ -43,24 +44,26 @@ const SelectCity = () => {
   }
 
   return (
-    <select
-      onChange={handleChange}
-      className="card-forcast__select"
-      defaultValue="Select city"
-    >
-    {
-      CITIES.map(option => (
-        <option
-          key={option.name}
-          value={option.lat}
-          disabled={option.disabled}
-          hidden={option.hidden}
-        >
-          {option.name}
-        </option>
-      ))  
-    }
-    </select>
+    <form className="card-forcast__select select-future">
+      <select
+        onChange={handleChange}
+        className="select-future__city select-future__city_active"
+        defaultValue="Select city"
+      >
+      {
+        CITIES.map(option => (
+          <option
+            key={option.name}
+            value={option.lat}
+            disabled={option.disabled}
+            hidden={option.hidden}
+          >
+            {option.name}
+          </option>
+        ))  
+      }
+      </select>
+    </form>
   )
 }
 

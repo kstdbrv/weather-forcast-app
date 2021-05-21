@@ -6,35 +6,75 @@ import './unit-past.scss';
 const UnitPast = () => {
   
   const data = useSelector(state => state.pastData);
-  console.log(data)
 
-  let day = data.current.dt;
-  let date = new Date();
-  date.setTime(day);
-  let currentDay = date.getDay() + ' ' + date.getMonth() + ' ' + date.getFullYear();
+  const unixTimestamp = data.current.dt;
+  const date = new Date(unixTimestamp * 1000);
 
-  function unixtime2YYMMDD(unixtime) {
-    var milliseconds = unixtime * 1000,
-        dateObject = new Date(milliseconds),
-      temp = [];
-    
-    temp.push(dateObject.getUTCDay());
-    temp.push(dateObject.getUTCMonth());
-    temp.push(dateObject.getUTCFullYear().toString().slice(2));
+  const dd = date.getDate();
+  const yyyy = date.getFullYear();
 
-    return temp.join("-");
+  if (dd < 10) { dd = '0' + dd };
+
+  function toStrMonth() {
+    let mm = date.getMonth() + 1;
+    switch (mm) {
+      case 1: return 'jan';
+      case 2: return 'feb';
+      case 3: return 'mar';
+      case 4: return 'apr';
+      case 5: return 'may';
+      case 6: return 'jun';
+      case 7: return 'jul';
+      case 8: return 'aug';
+      case 9: return 'sep';
+      case 10: return 'oct';
+      case 11: return 'nov';
+      case 12: return 'dec';
+      default: return;
+   }
   }
-  let www = unixtime2YYMMDD(data.current.dt);
+
+  const mm = toStrMonth();
+  const currentDate = dd + ' ' + mm + ' ' + yyyy;
+
+/*   const hourResult = data.hourly.find(({ dt }) =>
+    dt === 1621508400
+  ); */ 
+  const hourResult = data.hourly[11]; // 11:00
+  const currentTemp = Math.round(hourResult.temp);
+
+  function hasPlus() {
+    if(currentTemp >= 0){ return true }
+  }
 
   return (
     <div className="unit-past">
       <p className="unit-past__date">
-        { www }
+        { currentDate }
       </p>
-      <img src="" className="unit-past__image" />
-      <p className="unit-past__tmp">
-        { data.current.temp }
-      </p>
+      {
+        hourResult.weather.map(result => {
+
+          let url = 'http://openweathermap.org/img/wn/' + result.icon + '@2x.png';
+          return (
+            <img
+              key={ result.id }
+              className="unit-past__image"
+              src={ url }
+              alt={ result.description }
+            />
+          )
+        })
+      }
+      <div className="unit-past__tmp">
+        {
+          hasPlus() ? <span>+</span> : null
+        }
+        <span className="unit-past__num">
+          {currentTemp}
+        </span>
+        <span>°</span>
+      </div>
     </div>
   )
 }
