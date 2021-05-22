@@ -10,10 +10,10 @@ const App: React.FC = () => {
   return (
     <div className="wrapper">
       <Title />
-      <div className="container">
+      <main className="container">
        <CardForcast />
        <CardPast />
-      </div>
+      </main>
       <Footer />
     </div>
   );

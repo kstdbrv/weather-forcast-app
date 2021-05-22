@@ -48,7 +48,7 @@ const UnitPast = () => {
   }
 
   return (
-    <div className="unit-past">
+    <div className="card-forcast__unit unit-past">
       <p className="unit-past__date">
         { currentDate }
       </p>

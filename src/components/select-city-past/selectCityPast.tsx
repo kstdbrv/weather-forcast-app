@@ -43,7 +43,7 @@ const SelectCityPast = () => {
   return (
       <select
         onChange={handleChange}
-        className="input-style select-past__city select-past__city_active"
+        className="select-past__city select-past__city_active"
         defaultValue="Select city"
       >
       {

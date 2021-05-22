@@ -7,10 +7,11 @@ import { fetchPastForecast } from '../../store/actions/getWeather';
 
 const SelectDate = () => {
 
-/*   useEffect(() => {
-    let dateControl = document.querySelector('input[type="date"]');
-    dateControl.valueAsDate = new Date();
-  }, []) */
+  useEffect(() => {
+    let dateControl = document.querySelector('.select-past__date');
+    dateControl.setAttribute("onfocus", "(this.type='date')");
+    /* onblur="(this.type='text')" */
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -23,8 +24,9 @@ const SelectDate = () => {
 
   return (
     <input
-      className="input-style select-past__date"
-      type="date"
+      className="select-past__date"
+      type="text"
+      placeholder="Select date"
       onChange={handleChange}
     />
   )
