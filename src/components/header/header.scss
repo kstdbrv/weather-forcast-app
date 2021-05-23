@@ -14,5 +14,13 @@
   h2:last-child {
     text-align: right;
    }
+   @media (min-width: 1280px) {
+    max-width: 777px;
+    font-size: 102px;
+    line-height: 122px;
+  }
+  @media (min-width: 1580px) {
+   margin-bottom: 60px;
+  }
 }
 

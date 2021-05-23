@@ -11,14 +11,20 @@
   margin-bottom: 10px;
   &--future {
     min-height: 486px;
+    @media (min-width: 1280px) {
+      height: 524px;
+    }
   }
   &--past {
-    min-height: 602px;
+    height: 524px;
   }
   &__title {
     font-size: 32px;
     margin-bottom: 32px;
     &--left {
+      text-align: left;
+    }
+    @media (min-width: 1280px) {
       text-align: left;
     }
   }
@@ -37,5 +43,10 @@
   &__overflow {
     display: flex;
     width: 1250px;
+  }
+  @media (min-width: 1280px) {
+    width: 660px;
+    padding: 50px 58px 63px;
+    margin-bottom: 34px;
   }
 }

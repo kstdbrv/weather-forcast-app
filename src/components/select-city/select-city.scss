@@ -1,6 +1,9 @@
 @import '../../variables.scss';
 
 .select-future {
+  @media (min-width: 1280px) {
+    text-align: left;
+  }
  &__city {
     @extend %Ubuntu-Regular;
     font-size: 16px;
@@ -27,6 +30,10 @@
     background-position: right 20px top 50%, 0 0;
     &--active {
       color: $mainColor;
+    }
+    @media (min-width: 1280px) {
+      text-align: left;
+      margin-bottom: 64px;
     }
  }
 }

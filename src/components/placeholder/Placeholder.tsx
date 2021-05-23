@@ -1,5 +1,6 @@
 import React from 'react';
 import image from '../../assets/images/placeholder.svg';
+import './placeholder.scss';
 
 const Placeholder: React.FC = () => {
   return (

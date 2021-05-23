@@ -1,6 +1,10 @@
 @import '../../variables.scss';
 
 .select-past {
+  @media (min-width: 1280px) {
+   display: flex;
+   justify-content: space-between;
+  }
  &__city {
     @extend %Ubuntu-Regular;
     font-size: 16px;
@@ -28,5 +32,6 @@
     &--active {
       color: $mainColor;
     }
+
  }
-}
+}    
