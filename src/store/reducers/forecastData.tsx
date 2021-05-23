@@ -1,8 +1,6 @@
 import { FETCH_7DAYSFORECAST } from '../actions/actionTypes';
 
-let initialState = {
-  daysForecast: null,
-}
+let initialState = {};
 
 const forecastDataReducer = (state = initialState, action) => {
   switch (action.type) {

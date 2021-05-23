@@ -1,9 +1,8 @@
 import React from 'react';
 import './loader.scss';
 
-const Loader:React.FC = () => (
+const Loader: React.FC = () => (
   
-  <React.Fragment>
     <div className='loader-centre'>
       <div className="lds-roller">
         <div></div>
@@ -16,7 +15,6 @@ const Loader:React.FC = () => (
         <div></div>
       </div>
     </div>
-  </React.Fragment>
 )
 
 export default Loader;

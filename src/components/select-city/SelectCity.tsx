@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './select-city.scss';
 import { useDispatch } from 'react-redux';
 import { fetch7DayForecast } from '../../store/actions/getWeather';
@@ -13,15 +13,15 @@ const CITIES = [
   { name: 'Краснодар', lat: '45.035470' },
 ]
 
-const SelectCity = () => {
+const SelectCity = ({ data }) => {
 
-  useEffect(() => {
+/*   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/lib/select.js";
     script.async = true;
   
     document.body.appendChild(script);
-  }, []);
+  }, []); */
 
   const dispatch = useDispatch();
 
@@ -42,23 +42,29 @@ const SelectCity = () => {
      default: return;
     }
   }
+  
+  let isEmpty = Object.keys(data);
+  const cls = [
+    'select-future__city',
+    isEmpty.length ? 'select-future__city--active' : null,
+  ];
 
   return (
     <form className="card-forcast__select select-future">
-      <select
-        onChange={handleChange}
-        className="select-future__city select-future__city_active"
+      <select 
+        onChange={ handleChange }
+        className={ cls.join(' ') }
         defaultValue="Select city"
       >
       {
         CITIES.map(option => (
           <option
-            key={option.name}
-            value={option.lat}
-            disabled={option.disabled}
-            hidden={option.hidden}
+            key={ option.name }
+            value={ option.lat }
+            disabled={ option.disabled }
+            hidden={ option.hidden }
           >
-            {option.name}
+            { option.name }
           </option>
         ))  
       }

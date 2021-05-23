@@ -10,18 +10,21 @@ const CardPast = () => {
 
   const loading = useSelector(state => state.app.loadingPast);
   const data = useSelector(state => state.pastData);
+  const { cityLocation } = useSelector(state => state.pastCardInfo);
+  const { unixDate } = useSelector(state => state.pastCardInfo);
 
   return (
-    <article className="card-forcast">
-      <h3 className="card-forcast__title card-forcast__title_left">
+    <article className="card-forcast card-forcast--past">
+      <h3 className="card-forcast__title card-forcast__title--left">
         Forecast for a Date in the Past
       </h3>
       <form className="card-forcast__select select-past">
-        <SelectCityPast />
-        <SelectDate />
+        <SelectCityPast data={ cityLocation } />
+        <SelectDate data={ unixDate } />
       </form>
       {
-        loading ? <Loader /> : Object.keys(data).length ?
+        loading ? <Loader /> :
+        Object.keys(data).length ?
         <UnitPast /> : <Placeholder />
       }
     </article>

@@ -7,7 +7,7 @@
     line-height: 24px;
     color: $secondColor;
     width: 252px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     margin-bottom: 33px;
     background: rgba(128, 131, 164, 0.06);
     border: 2px solid rgba(128, 131, 164, 0.2);
@@ -25,5 +25,8 @@
     background-image: url('../../assets/images/select-arrow.svg');
     background-repeat: no-repeat, repeat;
     background-position: right 20px top 50%, 0 0;
+    &--active {
+      color: $mainColor;
+    }
  }
 }

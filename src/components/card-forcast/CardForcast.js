@@ -9,19 +9,20 @@ import Loader from '../loader/Loader';
 const CardForcast = () => {
 
   const loading = useSelector(state => state.app.loadingForecast);
+  const data = useSelector(state => state.forecastData);
 
   return (
-    <article className="card-forcast">
+    <article className="card-forcast card-forcast--future">
       <h3 className="card-forcast__title">
         7 Days Forecast
       </h3>
-      <SelectCity />
+      <SelectCity data={ data } />
       {
         loading ? <Loader /> :
         <React.Fragment>
           <img
            className="card-forcast__placeholder"
-           src={Placeholder}
+           src={ Placeholder }
            alt="placeholder of weather"
           />
           <p className="card-forcast__text">

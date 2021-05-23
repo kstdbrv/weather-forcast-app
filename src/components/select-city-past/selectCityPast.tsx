@@ -13,7 +13,7 @@ const CITIES = [
   { name: 'Краснодар', lat: '45.035470' },
 ]
 
-const SelectCityPast = () => {
+const SelectCityPast = ({ data }) => {
 
   const dispatch = useDispatch();
 
@@ -40,10 +40,15 @@ const SelectCityPast = () => {
     }
   }
 
+  const cls = [
+    'select-past__city',
+    data === null ? null : 'select-past__city--active',
+  ];
+
   return (
       <select
         onChange={handleChange}
-        className="select-past__city select-past__city_active"
+        className={ cls.join(' ') }
         defaultValue="Select city"
       >
       {

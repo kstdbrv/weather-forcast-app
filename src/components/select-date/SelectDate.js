@@ -5,7 +5,7 @@ import { getDate } from '../../store/actions/getDate';
 import { fetchPastForecast } from '../../store/actions/getWeather';
 
 
-const SelectDate = () => {
+const SelectDate = ({ data }) => {
 
   useEffect(() => {
     let dateControl = document.querySelector('.select-past__date');
@@ -22,12 +22,17 @@ const SelectDate = () => {
     dispatch(fetchPastForecast());
   }
 
+  const cls = [
+    'select-past__date',
+    data === null ? null : 'select-past__date--active',
+  ];
+
   return (
     <input
-      className="select-past__date"
+      className={ cls.join(' ') }
       type="text"
       placeholder="Select date"
-      onChange={handleChange}
+      onChange={ handleChange }
     />
   )
 }

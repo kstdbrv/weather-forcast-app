@@ -58,7 +58,7 @@ export function fetchPastForecast() {
     try {
       dispatch(showLoaderPast());
 
-      const url = `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}&lang=en`;
+      const url = `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}`;
       const response = await axios.get(url, { cancelToken: source.token });
 
       dispatch({
