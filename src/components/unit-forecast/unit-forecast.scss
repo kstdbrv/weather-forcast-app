@@ -2,6 +2,8 @@
 
 .unit-forecast {
   position: relative;
+  margin-right: 16px;
+  width: 174px;
   height: 238px;
   color: #FFFFFF;
   padding: 20px;
@@ -17,10 +19,10 @@
     line-height: 24px;
   }
   &__image {
-    padding-top: 15px;
+    padding-top: 35px;
     display: block;
     margin: 0 auto;
-    width: 160px;
+    width: 120px;
     height: auto;
   }
   &__tmp {
@@ -31,7 +33,6 @@
     line-height: 32px;
   }
   &__num {
-    margin-left: 2px;
     margin-right: 2px;
   }
 }

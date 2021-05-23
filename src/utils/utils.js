@@ -44,19 +44,3 @@ export function getTemp(currentTemp) {
 
   return temp
 }
-
-
-
-
-
-/* 
-    const result = data.daily.map(day => {
-    return {
-      unixTimestamp: day.dt,
-      currentTemp: day.temp.eve,
-      weather: day.weather,
-    }
-  });
-  const qqq = Object.assign({}, result);
-
-console.log(qqq) */

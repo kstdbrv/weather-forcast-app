@@ -29,5 +29,13 @@
     color: $secondColor;
     font-size: 16px;
     line-height: 24px;
-  } 
+  }
+  &__wrapper {
+    overflow-x: scroll;
+    margin-right: -24px;
+  }
+  &__overflow {
+    display: flex;
+    width: 1250px;
+  }
 }

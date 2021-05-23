@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getDate, getTemp  } from '../../utils/utils';
+import './unit-forecast.scss';
 
 const UnitForecast = () => {
 
@@ -13,9 +14,9 @@ const UnitForecast = () => {
     return (
         <div 
         key={ day.dt }
-        className="card-forcast__unit unit-past"
+        className="unit-forecast"
         >
-          <p className="unit-past__date">
+          <p className="unit-forecast__date">
             { date }
           </p>
         {
@@ -25,15 +26,15 @@ const UnitForecast = () => {
             return (
               <img
                 key={ result.id }
-                className="unit-past__image"
+                className="unit-forecast__image"
                 src={ url }
                 alt={ result.description }
               />
             )
           })
         }
-          <div className="unit-past__tmp">
-            <span className="unit-past__num">
+          <div className="unit-forecast__tmp">
+            <span className="unit-forecast__num">
               { temp }
             </span>
             <span>°</span>

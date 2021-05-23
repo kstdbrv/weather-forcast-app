@@ -21,7 +21,12 @@ const CardForcast = () => {
       {
         loading ? <Loader /> :
         Object.keys(data).length ?
-        <UnitForecast /> : <Placeholder />
+            <div className="card-forcast__wrapper">
+              <div className="card-forcast__overflow">
+                <UnitForecast />
+              </div>
+            </div>
+            : <Placeholder />
       }
     </article>
   )
