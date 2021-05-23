@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './card-forcast.scss';
-import Placeholder from '../../assets/images/placeholder.svg';
 import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
+import UnitForecast from '../unit-forecast/unit-forecast';
+import Placeholder from '../placeholder/Placeholder';
 
 
 const CardForcast = () => {
@@ -19,17 +20,8 @@ const CardForcast = () => {
       <SelectCity data={ data } />
       {
         loading ? <Loader /> :
-        <React.Fragment>
-          <img
-           className="card-forcast__placeholder"
-           src={ Placeholder }
-           alt="placeholder of weather"
-          />
-          <p className="card-forcast__text">
-            Fill in all the fields and
-            the weather will be displayed
-          </p>    
-        </React.Fragment>
+        Object.keys(data).length ?
+        <UnitForecast /> : <Placeholder />
       }
     </article>
   )
