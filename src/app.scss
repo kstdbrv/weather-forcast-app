@@ -13,11 +13,8 @@
 .container {
   min-height: calc(100vh - 368px);
   margin: 0 auto;
-  @media (min-width: 1580px) {
+  @media (min-width: 1480px) {
     max-width: 1425px;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(auto-fill, 660px);
-    grid-gap: 34px;
+    display: flex;
    }
 }

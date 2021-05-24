@@ -6,12 +6,12 @@ import { getDate, getTemp  } from '../../utils/utils';
 
 const UnitPast = () => {
   
-  const data = useSelector(state => state.pastData);
+  const data = useSelector((state: any) => state.pastData);
 
   const hourResult = data.hourly[11]; // 11:00
 
-  const date = getDate(data.current.dt);
-  const temp = getTemp(hourResult.temp);
+  const date: string = getDate(data.current.dt);
+  const temp: number = getTemp(hourResult.temp);
 
 
   return (

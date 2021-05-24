@@ -7,7 +7,7 @@ const Placeholder: React.FC = () => {
     <React.Fragment>
       <img
        className="card-forcast__placeholder"
-       src={image}
+       src={ image }
        alt="картинка вместо погоды"
       />
       <p className="card-forcast__text">

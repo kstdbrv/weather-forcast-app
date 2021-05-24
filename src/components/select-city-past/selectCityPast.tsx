@@ -33,7 +33,7 @@ const SelectCityPast = ({ data }) => {
 
   return (
       <select
-        onChange={handleChange}
+        onChange={ handleChange }
         className={ cls.join(' ') }
         defaultValue="Select city"
       >

@@ -3,9 +3,14 @@ import { useSelector } from 'react-redux';
 import { getDate, getTemp  } from '../../utils/utils';
 import './unit-forecast.scss';
 
+
 const UnitForecast = () => {
 
-  const data = useSelector(state => state.forecastData);
+  interface RootState {
+    forecastData: any
+  };
+
+  const data = useSelector((state: RootState) => state.forecastData);
 
   return data.daily.map(day => {
 
