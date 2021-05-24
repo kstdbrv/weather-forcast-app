@@ -10,13 +10,16 @@
   border-radius: 8px;
   margin-bottom: 10px;
   &--future {
-    min-height: 486px;
+    height: 486px;
     @media (min-width: 1280px) {
       height: 524px;
     }
   }
   &--past {
-    height: 524px;
+    height: 601px;
+    @media (min-width: 1280px) {
+      height: 524px;
+    }
   }
   &__title {
     font-size: 32px;
