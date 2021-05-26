@@ -1,12 +1,15 @@
-export function getDate(unixTimestamp) {
+
+export function getDate(unixTimestamp:number):string {
 
   const date = new Date(unixTimestamp * 1000);
 
-  let dd = date.getDate();
-  const yyyy = date.getFullYear();
+  let dd:number = date.getDate();
+  const yyyy: number = date.getFullYear();
+  
+  type Date = string | undefined;
 
-  function toStrMonth() {
-    let mm = date.getMonth() + 1;
+  function toStrMonth():Date {
+    const mm:number = date.getMonth() + 1;
     switch (mm) {
       case 1: return 'jan';
       case 2: return 'feb';
@@ -24,17 +27,17 @@ export function getDate(unixTimestamp) {
    }
   }
 
-  const mm = toStrMonth();
+  const mm:Date = toStrMonth();
   const currentDate = dd + ' ' + mm + ' ' + yyyy;
 
   return currentDate
 }
 
-export function getTemp(currentTemp) {
+export function getTemp(currentTemp:number):string {
 
-  let temp = Math.round(currentTemp);
+  let temp:any = Math.round(currentTemp);
 
-  function isAddPlus() {
+  function isAddPlus():string | undefined {
     if ( currentTemp >= 0 ) {
       return '+' + temp.toString()
     }

@@ -4,18 +4,20 @@ import { getDate, getTemp  } from '../../utils/utils';
 import './unit-forecast.scss';
 
 
-const UnitForecast = () => {
+const UnitForecast:React.FC = () => {
 
-  interface RootState {
-    forecastData: any
+  interface IRootState {
+    forecastData: {
+      daily: any
+    }
   };
 
-  const data = useSelector((state: RootState) => state.forecastData);
+  const data = useSelector((state: IRootState) => state.forecastData);
 
   return data.daily.map(day => {
 
-    const date = getDate(day.dt);
-    const temp = getTemp(day.temp.eve);
+    const date:string = getDate(day.dt);
+    const temp:string = getTemp(day.temp.eve);
     return (
         <div 
         key={ day.dt }

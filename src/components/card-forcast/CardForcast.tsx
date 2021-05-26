@@ -7,10 +7,14 @@ import UnitForecast from '../unit-forecast/unit-forecast';
 import Placeholder from '../placeholder/Placeholder';
 
 
-const CardForcast = () => {
+const CardForcast: React.FC = () => {
+  
+  interface IApp {
+    app: { loadingForecast: boolean }
+  };
 
-  const loading = useSelector(state => state.app.loadingForecast);
-  const data = useSelector(state => state.forecastData);
+  const loading = useSelector((state:IApp) => state.app.loadingForecast);
+  const data = useSelector((state:any) => state.forecastData);
 
   return (
     <article className="card-forcast card-forcast--future">

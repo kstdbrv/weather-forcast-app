@@ -4,14 +4,14 @@ import './unit-past.scss';
 import { getDate, getTemp  } from '../../utils/utils';
 
 
-const UnitPast = () => {
+const UnitPast:React.FC = () => {
   
   const data = useSelector((state: any) => state.pastData);
 
   const hourResult = data.hourly[11]; // 11:00
 
-  const date: string = getDate(data.current.dt);
-  const temp: number = getTemp(hourResult.temp);
+  const date:string = getDate(data.current.dt);
+  const temp:string = getTemp(hourResult.temp);
 
 
   return (

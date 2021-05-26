@@ -8,10 +8,24 @@ import Placeholder from '../placeholder/Placeholder'
 
 const CardPast = () => {
 
-  const loading = useSelector(state => state.app.loadingPast);
-  const data = useSelector(state => state.pastData);
-  const { cityLocation } = useSelector(state => state.pastCardInfo);
-  const { unixDate } = useSelector(state => state.pastCardInfo);
+  interface IApp {
+    app: { loadingPast: boolean }
+  };
+
+  interface ICardInfo {
+    pastCardInfo: {
+      cityLocation: {
+        lat: string,
+        lon: string
+      },
+      unixDate: number
+    }
+  };
+
+  const loading = useSelector((state:IApp) => state.app.loadingPast);
+  const data = useSelector((state:any) => state.pastData);
+  const { cityLocation } = useSelector((state:ICardInfo) => state.pastCardInfo);
+  const { unixDate } = useSelector((state:ICardInfo) => state.pastCardInfo);
 
   return (
     <article className="card-forcast card-forcast--past">
