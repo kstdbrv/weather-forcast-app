@@ -1,12 +1,15 @@
 import './select-city-past.scss';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLocation } from '../../store/actions/getLocation';
 import { CITIES } from '../../cities/cities';
+import { ICardInfo } from '../../interfaces';
 
 
-const SelectCityPast = ({ data }) => {
+const SelectCityPast:React.FC = () => {
 
   const dispatch = useDispatch();
+  const data = useSelector((state:ICardInfo) => state.pastCardInfo.cityLocation);
 
   const handleChange = e => { 
     let lon;

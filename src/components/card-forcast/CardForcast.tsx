@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './card-forcast.scss';
 import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
-import UnitForecast from '../unit-forecast/unit-forecast';
+import UnitForecast from '../unit-forecast/UnitForecast';
 import Placeholder from '../placeholder/Placeholder';
 
 
@@ -24,7 +24,7 @@ const CardForcast: React.FC = () => {
       <SelectCity data={ data } />
       {
         loading ? <Loader /> :
-        Object.keys(data).length ?
+        data.hourly ?
             <div className="card-forcast__wrapper">
               <div className="card-forcast__overflow">
                 <UnitForecast />

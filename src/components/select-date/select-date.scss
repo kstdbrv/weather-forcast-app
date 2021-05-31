@@ -1,9 +1,13 @@
 @import '../../variables.scss';
 
 .select-past {
+  @extend %Ubuntu-Regular;
+  font-size: 16px;
+ &__wrapper {
+   z-index: 1;
+   position: relative;
+ }
  &__date {
-    @extend %Ubuntu-Regular;
-    font-size: 16px;
     line-height: 24px;
     color: $secondColor;
     width: 252px;
@@ -12,9 +16,6 @@
     background: rgba(128, 131, 164, 0.06);
     border: 2px solid rgba(128, 131, 164, 0.2);
     border-radius: 8px;
-    &::placeholder {
-      color: $secondColor;
-    }
     &:focus {
       border: 2px solid #373AF5;
     }
@@ -32,20 +33,51 @@
       color: $mainColor;
     }
  }
+ &__placeholder {
+  z-index: -1;
+   position: absolute;
+   top: 16px;
+   left: 19px;
+   color: $secondColor;
+ }
+
+ .select-past__date::-webkit-calendar-picker-indicator {
+  opacity: 0;
+ };
+ .select-past__date::-webkit-datetime-edit-day-field {
+  opacity: 0;
+ }
+ .select-past__date::-webkit-datetime-edit-year-field {
+  opacity: 0;
+ }
+ .select-past__date::-webkit-datetime-edit-month-field {
+  opacity: 0;
+ }
+ .select-past__date::-webkit-datetime-edit-text {
+  opacity: 0;
+ }
+
+ &__hide-placeholder {
+  .select-past__placeholder {
+    display: none;
+  }
+ } 
+
+ &__hide-placeholder {
+  .select-past__date::-webkit-datetime-edit-day-field {
+    opacity: 1;
+   }
+   .select-past__date::-webkit-datetime-edit-year-field {
+    opacity: 1;
+   }
+   .select-past__date::-webkit-datetime-edit-month-field {
+    opacity: 1;
+   }
+   .select-past__date::-webkit-datetime-edit-text {
+    opacity: 1;
+   }
+ } 
+
+
 }
 
-.select-past__date::-webkit-calendar-picker-indicator {
-  opacity: 0;
-};
-/* .select-past__date::-webkit-datetime-edit-day-field {
-  display: none;
-}
-.select-past__date::-webkit-datetime-edit-year-field {
-  display: none;
-}
-.select-past__date::-webkit-datetime-edit-month-field {
-  display: none;
-}
-.select-past__date::-webkit-datetime-edit-text {
-  display: none;
-} */
