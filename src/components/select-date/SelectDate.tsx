@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import './select-date.scss';
 import { useDispatch } from 'react-redux';
@@ -9,12 +9,15 @@ import { ICardInfo } from '../../interfaces'
 
 const SelectDate:React.FC = () => {
 
-  const data = useSelector((state:ICardInfo) => state.pastCardInfo.unixDate);
+  const data = useSelector((state: ICardInfo) => state.pastCardInfo.unixDate);
+  
+  const inputRef = useRef<HTMLInputElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
 
-    const input = document.querySelector('.select-past__date');
-    const wrapper = document.querySelector('.select-past__wrapper');
+    const input:HTMLInputElement | null = inputRef.current;
+    const wrapper:HTMLDivElement | null = wrapperRef.current;
 
     const addClass = () => {
       wrapper!.classList.add('select-past__hide-placeholder');
@@ -39,12 +42,12 @@ const SelectDate:React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const handleChange = e => { 
+  const handleChange = e => {
     const date = e.target.value;
     const unixDate = new Date(`${date}`).getTime() / 1000;
     dispatch(getDate(unixDate));
     dispatch(fetchPastForecast());
-  }
+  };
 
   const cls = [
     'select-past__date',
@@ -52,10 +55,14 @@ const SelectDate:React.FC = () => {
   ];
 
   return (
-    <div className="select-past__wrapper">
+    <div
+      className="select-past__wrapper"
+      ref={ wrapperRef }
+    >
       <input
-        className={ cls.join(' ') }
+        className={ cls.join(' ').trim() }
         type="date"
+        ref={ inputRef }
         onChange={ handleChange }
       />
       <p className="select-past__placeholder">
