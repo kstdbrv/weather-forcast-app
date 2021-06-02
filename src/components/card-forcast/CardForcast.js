@@ -5,7 +5,7 @@ import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
 import UnitForecast from '../unit-forecast/unit-forecast';
 import Placeholder from '../placeholder/Placeholder';
-
+import UnitFull from '../unit-full';
 
 const CardForcast = () => {
 
@@ -23,7 +23,8 @@ const CardForcast = () => {
         Object.keys(data).length ?
             <div className="card-forcast__wrapper">
               <div className="card-forcast__overflow">
-                <UnitForecast />
+                {/* <UnitForecast /> */}
+                <UnitFull />
               </div>
             </div>
             : <Placeholder />
