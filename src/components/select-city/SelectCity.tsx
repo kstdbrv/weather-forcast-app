@@ -6,14 +6,6 @@ import { CITIES } from '../../cities/cities';
 
 const SelectCity = ({ data }) => {
 
-/*   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "/lib/select.js";
-    script.async = true;
-  
-    document.body.appendChild(script);
-  }, []); */
-
   const dispatch = useDispatch();
 
   const handleChange = e => { 
