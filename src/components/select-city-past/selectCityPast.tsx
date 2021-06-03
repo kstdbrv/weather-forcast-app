@@ -37,7 +37,7 @@ const SelectCityPast:React.FC = () => {
   return (
       <select
         onChange={ handleChange }
-        className={ cls.join(' ') }
+        className={ cls.join(' ').trim() }
         defaultValue="Select city"
       >
       {

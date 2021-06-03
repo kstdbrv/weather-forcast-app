@@ -1,6 +1,7 @@
 @import '../../variables.scss';
 
 .card-forcast {
+  position: relative; // for arrows
   margin: 0 auto;
   width: 300px;
   padding: 32px 24px 63px;
@@ -46,6 +47,9 @@
   &__overflow {
     display: flex;
     width: 1250px;
+    @media (min-width: 1280px) {
+     width: unset;
+    }
   }
   @media (min-width: 1280px) {
     width: 660px;

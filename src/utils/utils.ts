@@ -3,7 +3,10 @@ export function getDate(unixTimestamp:number):string {
 
   const date = new Date(unixTimestamp * 1000);
 
-  let dd:number = date.getDate();
+  let dd: number | string = date.getDate();
+  
+  if (dd < 10) { dd = '0' + dd };
+
   const yyyy: number = date.getFullYear();
   
   type Date = string | undefined;

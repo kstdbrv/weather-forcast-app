@@ -8,3 +8,6 @@ export const FETCH_PAST_FORECAST = 'FETCH_PAST_FORECAST';
 
 export const GET_DATE = 'GET_DATE';
 export const GET_LOCATION = 'GET_LOCATION';
+
+export const HANDLE_NEXT = 'HANDLE_NEXT';
+export const HANDLE_PREV = 'HANDLE_PREV';

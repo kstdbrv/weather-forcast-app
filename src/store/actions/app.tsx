@@ -1,7 +1,7 @@
 import {
   SHOW_LOADER_FORECAST, HIDE_LOADER_PAST,
   HIDE_LOADER_FORECAST, SHOW_LOADER_PAST,
-} from './actionTypes'
+} from './actionTypes';
 
 export function showLoaderForcast() {
   return {
