@@ -18,37 +18,54 @@ const CardForcast: React.FC = () => {
 
   const cardsToShow = useRef([0, 1, 2]);
   const [result, setResult] = useState([]);
-  console.log(result)
-  
+
+  const isInctiveNext = cardsToShow.current.includes(7);
+  const isAIntivePrev = cardsToShow.current.includes(0);
+
   const handleNext = () => {
+    if (isInctiveNext) return;
     
     const nextCards = cardsToShow.current.map(card => {
       return card + 1
     });
-console.log('nextCards', nextCards)
+    cardsToShow.current = nextCards;
+
+    console.log('nextCards', nextCards)
+    
     const result: any = nextCards.map(card => {
       return data.daily[card]
     });
 
-    setResult(result);
+    setResult(prev => result);
   };
 
   const handlePrev = () => {
+    if (isAIntivePrev) return;
     
     const prevCards = cardsToShow.current.map(card => {
       return card - 1
     });
+    cardsToShow.current = prevCards;
 
     const result: any = prevCards.map(card => {
       return data.daily[card]
     });
 
-    setResult(result);
+    setResult(prev => result);
   };
 
+  const clsPrev = [
+    'arrow arrow-prev',
+    isAIntivePrev ? 'arrow--disabled' : '',
+  ];
 
+  const clsNext = [
+    'arrow arrow-next',
+    isInctiveNext ? 'arrow--disabled' : '',
+  ];
   
   return (
+    
     <article className="card-forcast card-forcast--future">
       <h3 className="card-forcast__title">
         7 Days Forecast
@@ -61,11 +78,11 @@ console.log('nextCards', nextCards)
               <div className="card-forcast__overflow">
                 <UnitForecast data={ result } />
                 <div
-                  className="arrow arrow-prev"
+                  className={ clsPrev.join(' ').trim() }
                   onClick={ handlePrev }
                 ></div>
                 <div
-                  className="arrow arrow-next"
+                  className={ clsNext.join(' ').trim() }
                   onClick={ handleNext }
                 ></div>
               </div>

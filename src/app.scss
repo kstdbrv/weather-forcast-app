@@ -5,7 +5,7 @@
              url('./assets/images/bg-down.svg') bottom left;
  background-color: $bgColor;
  background-repeat: no-repeat;
- @media (min-width: 1280px) {
+ @media (min-width: 768px) {
   background-size: 1131px auto, 575px, auto;
  }
 }

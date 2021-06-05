@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .select-future {
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     text-align: left;
   }
  &__city {
@@ -31,7 +31,7 @@
     &--active {
       color: $mainColor;
     }
-    @media (min-width: 1280px) {
+    @media (min-width: 768px) {
       text-align: left;
       margin-bottom: 64px;
     }

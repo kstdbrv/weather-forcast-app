@@ -1,8 +1,8 @@
 import React from 'react';
 import './header.scss';
 
-const Layout: React.FC = () => {
-  return (
+const Header: React.FC = () => (
+  
     <header className="main-title">
      <h2>
        Weather
@@ -11,7 +11,6 @@ const Layout: React.FC = () => {
       forecast 
      </h2>
    </header>
-  )
-}
+)
 
-export default Layout;
+export default Header;

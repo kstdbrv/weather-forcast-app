@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { getDate, getTemp  } from '../../utils/utils';
 import './unit-forecast.scss';
@@ -15,26 +15,22 @@ const UnitForecast: React.FC<any> = (props) => {
   let data = useSelector((state: IRootState) => state.forecastData);
   let forecastData;
 
-
+  if (window.screen.width > 768 && !!props.data.length) {
+      
+    forecastData = props.data;
+  } else if (window.screen.width < 768) {
     
-    console.log(window.screen.width > 1280 && !!props.data.length)
-
-    if (window.screen.width > 1280 && !!props.data.length) {
-      forecastData = props.data
-    } else if (window.screen.width < 1280) {
-      forecastData = data.daily
-    } else {
+     forecastData = data.daily;
+  } else {
+    
       const cards = [0, 1, 2];
       forecastData = cards.map(card => {
         return data.daily[card]
       }); 
     };
-
-
-  console.log('props ', props.data)
   
   return forecastData.map(day => {
-    console.log('renderUnit')
+ 
     const date:string = getDate(day.dt);
     const temp:string = getTemp(day.temp.eve);
     return (

@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .select-past {
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
    display: flex;
    justify-content: space-between;
   }

@@ -43,8 +43,12 @@ const SelectDate:React.FC = () => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
+
     const date = e.target.value;
     const unixDate = new Date(`${date}`).getTime() / 1000;
+
+    if (unixDate > Date.now() / 1000) return;
+
     dispatch(getDate(unixDate));
     dispatch(fetchPastForecast());
   };
