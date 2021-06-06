@@ -1,17 +1,21 @@
-import React from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { getDate, getTemp  } from '../../utils/utils';
 import './unit-forecast.scss';
+import { IDataInfo } from '../../interfaces';
 
+interface IunitProps {
+  data: IDataInfo[]
+};
 
-const UnitForecast: React.FC<any> = (props) => {
+interface IRootState {
+  forecastData: {
+    daily: IDataInfo[]
+  }
+};
+
+const UnitForecast: FC<IunitProps> = props => {
   
-  interface IRootState {
-    forecastData: {
-      daily: any
-    }
-  };
-
   let data = useSelector((state: IRootState) => state.forecastData);
   let forecastData;
 

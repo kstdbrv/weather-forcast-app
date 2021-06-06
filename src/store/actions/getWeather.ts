@@ -1,6 +1,7 @@
 import axios from '../../axios/axios';
 import { source } from '../../axios/axios';
 import { isCancel } from '../../axios/axios';
+import { IDataInfo } from '../../interfaces';
 import {
   FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST
 } from './actionTypes';
@@ -20,7 +21,7 @@ export function fetch7DayForecast(lat, lon, part = '') {
       dispatch(showLoaderForcast());
 
       const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=metric&appid=${API_KEY}`;
-      const response = await axios.get(url, { cancelToken: source.token });
+      const response = await axios.get<IDataInfo[]>(url, { cancelToken: source.token });
 
       dispatch({
         type: FETCH_7DAYSFORECAST,

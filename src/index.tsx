@@ -12,13 +12,13 @@ import reportWebVitals from './reportWebVitals';
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
-)  
+);
 
 const app = (
   <Provider store={store}>
-    <App /> 
+    <App />
   </Provider>
-)
+);
 
 ReactDOM.render(app, document.getElementById('root'));
 

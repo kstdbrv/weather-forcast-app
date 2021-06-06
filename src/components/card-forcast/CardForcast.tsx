@@ -5,6 +5,7 @@ import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
 import UnitForecast from '../unit-forecast/UnitForecast';
 import Placeholder from '../placeholder/Placeholder';
+import { IDataInfo } from '../../interfaces';
 
 
 const CardForcast: React.FC = () => {
@@ -16,11 +17,11 @@ const CardForcast: React.FC = () => {
   const loading = useSelector((state:IApp) => state.app.loadingForecast);
   const data = useSelector((state: any) => state.forecastData);
 
-  const cardsToShow = useRef([0, 1, 2]);
-  const [result, setResult] = useState([]);
+  const cardsToShow = useRef<number[]>([0, 1, 2]);
+  const [result, setResult] = useState<IDataInfo[]>([]);
 
-  const isInctiveNext = cardsToShow.current.includes(7);
-  const isAIntivePrev = cardsToShow.current.includes(0);
+  const isInctiveNext:boolean = cardsToShow.current.includes(7);
+  const isAIntivePrev:boolean = cardsToShow.current.includes(0);
 
   const handleNext = () => {
     if (isInctiveNext) return;
