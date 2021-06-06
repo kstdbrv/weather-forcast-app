@@ -3,9 +3,12 @@ import { IPastData } from '../../types/pastData';
 import { FETCH_PAST_FORECAST } from '../actions/actionTypes';
 
 
-let initialState = {
+/* let initialState:IPastData = {
+  current: { dt: null },
+  hourly: [],
+}; */
 
-};
+let initialState = {};
 
 const pastDataReducer = (state = initialState, action:IPastDataAction) => {
   switch (action.type) {

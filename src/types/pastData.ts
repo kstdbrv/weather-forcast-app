@@ -9,6 +9,7 @@ interface IHourly {
   weather: IWeather[]
 };
 
+
 export interface IPastData {
   current: { dt: number }
   hourly: IHourly[]
