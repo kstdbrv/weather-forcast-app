@@ -2,11 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './unit-past.scss';
 import { getDate, getTemp  } from '../../utils/utils';
+import { IPastData } from '../../types/pastData';
 
+
+interface IPastState {
+  pastData:IPastData
+};
 
 const UnitPast:React.FC = () => {
   
-  const data = useSelector((state: any) => state.pastData);
+  const data = useSelector((state: IPastState) => state.pastData);
 
   const hourResult = data.hourly[11]; // 11:00
 

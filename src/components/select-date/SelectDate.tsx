@@ -4,7 +4,7 @@ import './select-date.scss';
 import { useDispatch } from 'react-redux';
 import { getDate } from '../../store/actions/getDate';
 import { fetchPastForecast } from '../../store/actions/getWeather';
-import { ICardInfo } from '../../interfaces'
+import { ICardInfo } from '../../types/app'
 
 
 const SelectDate:React.FC = () => {

@@ -1,3 +1,4 @@
+// example
 export interface ICardInfo {
   pastCardInfo: {
     cityLocation: {
@@ -8,16 +9,20 @@ export interface ICardInfo {
     /* onClick: (id:number) => void, */
   }
 };
+// example
 
 
-interface IWeatherInfo {
-  icon: string,
-  id: number,
-  description: string,
+
+export interface IStateLoading {
+  loadingForecast: boolean
+  loadingPast: boolean
 };
 
-export interface IDataInfo {
-  dt: number,
-  temp: { eve: number },
-  weather: IWeatherInfo[],
+export interface IAppAction {
+  type: string
+  loadingForecast: boolean
+  loadingPast: boolean
 };
+
+
+

@@ -10,6 +10,8 @@ const rootReducer = combineReducers({
   forecastData: forecastDataReducer,
   pastData: pastDataReducer,
   pastCardInfo: pastCardReducer,
-})
+});
 
 export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>

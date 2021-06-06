@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLocation } from '../../store/actions/getLocation';
 import { CITIES } from '../../cities/cities';
-import { ICardInfo } from '../../interfaces';
+import { ICardInfo } from '../../types/app';
 
 
 const SelectCityPast:React.FC = () => {

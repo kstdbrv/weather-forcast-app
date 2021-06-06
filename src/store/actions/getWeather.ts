@@ -1,7 +1,9 @@
+import { Dispatch } from 'redux';
 import axios from '../../axios/axios';
 import { source } from '../../axios/axios';
 import { isCancel } from '../../axios/axios';
-import { IDataInfo } from '../../interfaces';
+import { IForecastData } from '../../types/forecastData';
+import { IPastData } from '../../types/pastData';
 import {
   FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST
 } from './actionTypes';
@@ -21,7 +23,7 @@ export function fetch7DayForecast(lat, lon, part = '') {
       dispatch(showLoaderForcast());
 
       const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=metric&appid=${API_KEY}`;
-      const response = await axios.get<IDataInfo[]>(url, { cancelToken: source.token });
+      const response = await axios.get<IForecastData[]>(url, { cancelToken: source.token });
 
       dispatch({
         type: FETCH_7DAYSFORECAST,
@@ -41,10 +43,10 @@ export function fetch7DayForecast(lat, lon, part = '') {
       }
     }
   }
-}
+};
 
 export function fetchPastForecast() {
-  
+  /* return async (dispatch: Dispatch<IPastDataAction>, getState) => { */
   return async (dispatch, getState) => {
 
     const { pastCardInfo } = getState();
@@ -60,7 +62,7 @@ export function fetchPastForecast() {
       dispatch(showLoaderPast());
 
       const url = `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}`;
-      const response = await axios.get(url, { cancelToken: source.token });
+      const response = await axios.get<IPastData>(url, { cancelToken: source.token });
 
       dispatch({
         type: FETCH_PAST_FORECAST,
@@ -80,6 +82,6 @@ export function fetchPastForecast() {
       }
     }
   }
-}
+};
 
 

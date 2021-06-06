@@ -2,15 +2,15 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { getDate, getTemp  } from '../../utils/utils';
 import './unit-forecast.scss';
-import { IDataInfo } from '../../interfaces';
+import { IForecastData } from '../../types/forecastData';
 
 interface IunitProps {
-  data: IDataInfo[]
+  data: IForecastData[]
 };
 
 interface IRootState {
   forecastData: {
-    daily: IDataInfo[]
+    daily: IForecastData[]
   }
 };
 

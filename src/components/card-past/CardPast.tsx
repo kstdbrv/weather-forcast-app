@@ -5,16 +5,23 @@ import SelectCityPast from '../select-city-past/SelectCityPast';
 import SelectDate from '../select-date/SelectDate';
 import UnitPast from '../unit-past/UnitPast';
 import Placeholder from '../placeholder/Placeholder'
+import { IStateLoading } from '../../types/app';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { IPastData } from '../../types/pastData';
 
+
+interface ILoading {
+  app:IStateLoading
+};
+
+interface IPastState {
+  pastData: IPastData
+};
 
 const CardPast: React.FC = () => {
 
-  interface IApp {
-    app: { loadingPast: boolean }
-  };
-
-  const loading = useSelector((state:IApp) => state.app.loadingPast);
-  const data = useSelector((state:any) => state.pastData);
+  const loading = useTypedSelector((state:ILoading) => state.app.loadingPast);
+  const data = useSelector((state:IPastState) => state.pastData);
 
   return (
     <article className="card-forcast card-forcast--past">

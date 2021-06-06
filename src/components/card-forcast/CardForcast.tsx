@@ -5,20 +5,21 @@ import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
 import UnitForecast from '../unit-forecast/UnitForecast';
 import Placeholder from '../placeholder/Placeholder';
-import { IDataInfo } from '../../interfaces';
+import { IForecastData } from '../../types/forecastData';
+import { IStateLoading } from '../../types/app';
 
 
 const CardForcast: React.FC = () => {
 
   interface IApp {
-    app: { loadingForecast: boolean }
+    app: IStateLoading
   };
 
   const loading = useSelector((state:IApp) => state.app.loadingForecast);
   const data = useSelector((state: any) => state.forecastData);
 
   const cardsToShow = useRef<number[]>([0, 1, 2]);
-  const [result, setResult] = useState<IDataInfo[]>([]);
+  const [result, setResult] = useState<IForecastData[]>([]);
 
   const isInctiveNext:boolean = cardsToShow.current.includes(7);
   const isAIntivePrev:boolean = cardsToShow.current.includes(0);
