@@ -1,5 +1,5 @@
 {
-  "name": "create-react-app-ts",
+  "name": "weather-forcast-app",
   "version": "0.1.0",
   "private": true,
   "homepage": "./",
@@ -19,13 +19,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "fix": "npm run lint -- --fix"
   },
   "browserslist": {
     "production": [
@@ -48,10 +44,16 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.16",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "gh-pages": "^3.1.0",
     "install": "^0.13.0",
     "node-sass": "^6.0.0",
-    "npm": "^7.14.0",
+    "npm": "^7.17.0",
     "react-scripts": "4.0.3",
     "redux-devtools-extension": "^2.13.9",
     "typescript": "^4.1.2"
