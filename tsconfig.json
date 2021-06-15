@@ -22,6 +22,6 @@
     "noImplicitAny": false
   },
   "include": [
-    "src", 
-    "public/lib"  ]
+    "src"
+, "public/lib"  ]
 }
