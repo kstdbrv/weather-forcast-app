@@ -14,8 +14,8 @@ export interface ICardInfo {
 
 
 export interface IStateLoading {
-  loadingForecast: boolean
-  loadingPast: boolean
+  loading7DaysForecast: boolean
+  loadingPastForecast: boolean
 };
 
 export interface IAppAction {

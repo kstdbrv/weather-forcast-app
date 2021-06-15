@@ -8,13 +8,13 @@ module.exports = {
   extends: [
     'react-app',
     'react-app/jest',
-    'airbnb-typescript'
+    /* 'airbnb-typescript' */
   ],
-  rules: {
+/*   rules: {
     'array-element-newline': 0,
     'no-console': 1,
     'linebreak-style': ['error', 'windows'],
-  },
+  }, */
   parserOptions: {
       project: './tsconfig.json',
    }
