@@ -15,33 +15,31 @@ const CardForcast: React.FC = () => {
     app: IStateLoading
   };
 
-  const loading = useSelector((state:IApp) => state.app.loadingForecast);
-  const data = useSelector((state: any) => state.forecastData);
+  const { loading7DaysForecast } = useSelector((state:IApp) => state.app);
+  const forecast7DaysData = useSelector((state: any) => state.forecastData);
 
   const cardsToShow = useRef<number[]>([0, 1, 2]);
-  const [result, setResult] = useState<IForecastData[]>([]);
+  const [currentShowCards, setCurrentShowCards] = useState<IForecastData[]>([]);
 
   const isInctiveNext:boolean = cardsToShow.current.includes(7);
   const isAIntivePrev:boolean = cardsToShow.current.includes(0);
 
-  const handleNext = () => {
+  const setNextCards = () => {
     if (isInctiveNext) return;
     
     const nextCards = cardsToShow.current.map(card => {
       return card + 1
     });
     cardsToShow.current = nextCards;
-
-    console.log('nextCards', nextCards)
     
-    const result: any = nextCards.map(card => {
-      return data.daily[card]
+    const currentShowCards: any = nextCards.map(card => {
+      return forecast7DaysData.daily[card]
     });
 
-    setResult(prev => result);
+    setCurrentShowCards(prev => currentShowCards);
   };
 
-  const handlePrev = () => {
+  const setPrevCards = () => {
     if (isAIntivePrev) return;
     
     const prevCards = cardsToShow.current.map(card => {
@@ -49,19 +47,19 @@ const CardForcast: React.FC = () => {
     });
     cardsToShow.current = prevCards;
 
-    const result: any = prevCards.map(card => {
-      return data.daily[card]
+    const currentShowCards: any = prevCards.map(card => {
+      return forecast7DaysData.daily[card]
     });
 
-    setResult(prev => result);
+    setCurrentShowCards(prev => currentShowCards);
   };
 
-  const clsPrev = [
+  const classiesPrev = [
     'arrow arrow-prev',
     isAIntivePrev ? 'arrow--disabled' : '',
   ];
 
-  const clsNext = [
+  const classiesNext = [
     'arrow arrow-next',
     isInctiveNext ? 'arrow--disabled' : '',
   ];
@@ -72,20 +70,20 @@ const CardForcast: React.FC = () => {
       <h3 className="card-forcast__title">
         7 Days Forecast
       </h3>
-      <SelectCity data={ data } />
+      <SelectCity forecast7DaysData={ forecast7DaysData } />
       {
-        loading ? <Loader /> :
-        data.hourly ?
+        loading7DaysForecast ? <Loader /> :
+        forecast7DaysData.hourly ?
             <div className="card-forcast__wrapper">
               <div className="card-forcast__overflow">
-                <UnitForecast data={ result } />
+                <UnitForecast currentShowCards={ currentShowCards } />
                 <div
-                  className={ clsPrev.join(' ').trim() }
-                  onClick={ handlePrev }
+                  className={ classiesPrev.join(' ').trim() }
+                  onClick={ setPrevCards }
                 ></div>
                 <div
-                  className={ clsNext.join(' ').trim() }
-                  onClick={ handleNext }
+                  className={ classiesNext.join(' ').trim() }
+                  onClick={ setNextCards }
                 ></div>
               </div>
             </div>

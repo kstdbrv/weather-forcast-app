@@ -9,35 +9,35 @@ import { ICardInfo } from '../../types/app';
 const SelectCityPast:React.FC = () => {
 
   const dispatch = useDispatch();
-  const data = useSelector((state:ICardInfo) => state.pastCardInfo.cityLocation);
+  const cityLocation = useSelector((state:ICardInfo) => state.pastCardInfo.cityLocation);
 
-  const handleChange = e => { 
-    let lon;
-    let lat = e.target.value;
-    switch (lat) {
+  const setCityLocation = e => { 
+    let longitude = '';
+    let latitude = e.target.value;
+    switch (latitude) {
      case '53.195873': // Самара
-        return dispatch(getLocation(lat, lon = '50.100193',));
+        return dispatch(getLocation(latitude, longitude = '50.100193',));
      case '53.507836': // Тольятти
-        return dispatch(getLocation(lat, lon = '49.420393'));
+        return dispatch(getLocation(latitude, longitude = '49.420393'));
      case '51.533557': // Саратов
-        return dispatch(getLocation(lat, lon = '46.034257'));
+        return dispatch(getLocation(latitude, longitude = '46.034257'));
      case '55.796127': // Казань
-        return dispatch(getLocation(lat, lon = '49.106405'));
+        return dispatch(getLocation(latitude, longitude = '49.106405'));
      case '45.035470': // Краснодар
-        return dispatch(getLocation(lat, lon = '38.975313'));
+        return dispatch(getLocation(latitude, longitude = '38.975313'));
      default: return;
     }
   }
 
-  const cls = [
+  const classies = [
     'select-past__city',
-    data === null ? null : 'select-past__city--active',
+    cityLocation === null ? null : 'select-past__city--active',
   ];
 
   return (
       <select
-        onChange={ handleChange }
-        className={ cls.join(' ').trim() }
+        onChange={ setCityLocation }
+        className={ classies.join(' ').trim() }
         defaultValue="Select city"
       >
       {
