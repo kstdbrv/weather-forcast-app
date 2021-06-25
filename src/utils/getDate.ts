@@ -9,7 +9,10 @@ export function getDate(unixTimestamp:number):string {
 
   const yyyy: number = date.getFullYear();
   
-  type Date = string | undefined;
+  type Date = 'jan' | 'feb' | 'mar' |
+              'apr' | 'may' | 'jun' |
+              'jul' | 'aug' | 'sep' |
+              'oct' | 'nov' | 'dec' | undefined;
 
   function toStrMonth():Date {
     const mm:number = date.getMonth() + 1;
@@ -31,22 +34,7 @@ export function getDate(unixTimestamp:number):string {
   }
 
   const mm:Date = toStrMonth();
-  const currentDate = dd + ' ' + mm + ' ' + yyyy;
+  const currentDate:string = dd + ' ' + mm + ' ' + yyyy;
 
   return currentDate
-}
-
-export function getTemp(currentTemp:number):string {
-
-  let temp:any = Math.round(currentTemp);
-
-  function isAddPlus():string | undefined {
-    if ( currentTemp >= 0 ) {
-      return '+' + temp.toString()
-    }
-  }
-
-  temp = isAddPlus();
-
-  return temp
 }

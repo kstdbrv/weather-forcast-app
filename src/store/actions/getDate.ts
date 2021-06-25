@@ -1,8 +1,9 @@
-import { GET_DATE } from './actionTypes';
+import { PastCard } from '../../types/pastCard';
 
-export function getDate(unixDate) {
+
+export function getDate(unixDate: number) {
   return {
-    type: GET_DATE,
+    type: PastCard.GET_DATE,
     unixDate
  }
 }

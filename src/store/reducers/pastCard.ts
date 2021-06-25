@@ -1,12 +1,9 @@
-import { GET_DATE, GET_LOCATION } from '../actions/actionTypes';
-import { IPastCardState } from '../../types/pastCard';
+import {
+  IPastCardState,
+  PastCard,
+  PastCardAction
+} from '../../types/pastCard';
 
-
-interface IpastCardAction {
-  type: string,
-  unixDate: number,
-  cityLocation:string
-};
 
 let initialState: IPastCardState = {
   unixDate: null,
@@ -14,12 +11,12 @@ let initialState: IPastCardState = {
 };
 
 const pastCardReducer = (
-  state = initialState, action: IpastCardAction
+  state = initialState, action: PastCardAction
 ): IPastCardState => {
   switch (action.type) {
-    case GET_DATE:
+    case PastCard.GET_DATE:
       return { ...state, unixDate: action.unixDate }
-    case GET_LOCATION:
+    case PastCard.GET_LOCATION:
       return { ...state, cityLocation: action.cityLocation }
     default: return state;
   }

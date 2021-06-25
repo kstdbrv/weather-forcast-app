@@ -20,8 +20,8 @@ interface IPastState {
 
 const CardPast: React.FC = () => {
 
-  const { loadingPastForecast } = useTypedSelector((state:ILoading) => state.app);
-  const pastDataForecast = useSelector((state:IPastState) => state.pastData);
+  const loading = useTypedSelector((state:ILoading) => state.app.loadingPast);
+  const data = useSelector((state:IPastState) => state.pastData);
 
   return (
     <article className="card-forcast card-forcast--past">
@@ -33,8 +33,8 @@ const CardPast: React.FC = () => {
         <SelectDate />
       </form>
       {
-        loadingPastForecast ? <Loader /> :
-        pastDataForecast.hourly ?
+        loading ? <Loader /> :
+        data.hourly ?
         <UnitPast /> : <Placeholder />
       }
     </article>

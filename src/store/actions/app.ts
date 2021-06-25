@@ -1,28 +1,26 @@
-import {
-  SHOW_LOADER_FORECAST, HIDE_LOADER_PAST,
-  HIDE_LOADER_FORECAST, SHOW_LOADER_PAST,
-} from './actionTypes';
+import { LoaderStatus } from '../../types/app';
+
 
 export function showLoaderForcast() {
   return {
-    type: SHOW_LOADER_FORECAST
+    type: LoaderStatus.SHOW_LOADER_FORECAST
   }
 }
 
 export function hideLoaderForcast() {
   return {
-    type: HIDE_LOADER_FORECAST
+    type: LoaderStatus.HIDE_LOADER_FORECAST
   }
 }
 
 export function showLoaderPast() {
   return {
-    type: SHOW_LOADER_PAST
+    type: LoaderStatus.SHOW_LOADER_PAST
   }
 }
 
 export function hideLoaderPast() {
   return {
-    type: HIDE_LOADER_PAST
+    type: LoaderStatus.HIDE_LOADER_PAST
   }
 }

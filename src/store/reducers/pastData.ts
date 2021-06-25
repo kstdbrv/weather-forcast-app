@@ -1,18 +1,21 @@
-import {  IPastDataAction } from '../../types/pastData';
-import { IPastData } from '../../types/pastData';
-import { FETCH_PAST_FORECAST } from '../actions/actionTypes';
+import { PastDataAction, PastData } from '../../types/pastData';
 
-
-/* let initialState:IPastData = {
+/* let initialState = {
   current: { dt: null },
-  hourly: [],
+  hourly: [
+    {
+      temp: null,
+      weather: []
+   }
+  ],
 }; */
 
 let initialState = {};
 
-const pastDataReducer = (state = initialState, action:IPastDataAction) => {
+const pastDataReducer = (
+  state = initialState, action: PastDataAction) => {
   switch (action.type) {
-    case FETCH_PAST_FORECAST:
+    case PastData.FETCH_PAST_FORECAST:
       return action.data;
     default: return state;
   }
