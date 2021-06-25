@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import './unit-past.scss';
-import { getDate, getTemp  } from '../../utils/utils';
+import { getDate } from '../../utils/getDate';
 import { IPastData } from '../../types/pastData';
+import { useSelector } from 'react-redux';
 
 
 interface IPastState {
@@ -11,13 +11,12 @@ interface IPastState {
 
 const UnitPast:React.FC = () => {
   
-  const pastDataForecast = useSelector((state: IPastState) => state.pastData);
+  const data = useSelector((state: IPastState) => state.pastData);
 
-  const hourResult = pastDataForecast.hourly[11]; // 11:00
+  const hourResult = data.hourly[11]; // 11:00
 
-  const date:string = getDate(pastDataForecast.current.dt);
-  const temp:string = getTemp(hourResult.temp);
-
+  const date:string = getDate(data.current.dt);
+  const temp:number = Math.round(hourResult.temp);
 
   return (
     <div className="card-forcast__unit unit-past">
@@ -40,7 +39,7 @@ const UnitPast:React.FC = () => {
       }
       <div className="unit-past__tmp">
         <span className="unit-past__num">
-          { temp }
+        { temp >= 0 ? `+${temp}` : temp }
         </span>
         <span>°</span>
       </div>

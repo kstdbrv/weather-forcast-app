@@ -15,7 +15,11 @@ export interface IPastData {
   hourly: IHourly[]
 };
 
-export interface IPastDataAction {
-  type: string
-  data: IPastData
+export type PastDataAction = {
+  type: PastData.FETCH_PAST_FORECAST;
+  data: IPastData;
+};
+
+export enum PastData {
+  FETCH_PAST_FORECAST = 'FETCH_PAST_FORECAST'
 };

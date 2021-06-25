@@ -1,12 +1,8 @@
-import { Dispatch } from 'redux';
 import axios from '../../axios/axios';
 import { source } from '../../axios/axios';
 import { isCancel } from '../../axios/axios';
-import { IForecastData } from '../../types/forecastData';
-import { IPastData } from '../../types/pastData';
-import {
-  FETCH_7DAYSFORECAST, FETCH_PAST_FORECAST
-} from './actionTypes';
+import { Days7Forecast, IForecastData } from '../../types/forecastData';
+import { IPastData, PastData } from '../../types/pastData';
 import {
   hideLoaderPast, showLoaderForcast,
   showLoaderPast, hideLoaderForcast,
@@ -26,13 +22,13 @@ export function fetch7DayForecast(lat, lon, part = '') {
       const response = await axios.get<IForecastData[]>(url, { cancelToken: source.token });
 
       dispatch({
-        type: FETCH_7DAYSFORECAST,
+        type: Days7Forecast.FETCH_7DAYSFORECAST,
         data: response.data
       });
 
       dispatch(hideLoaderForcast());
 
-    } catch (thrown) {
+    } catch (thrown:any) {
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
@@ -65,13 +61,13 @@ export function fetchPastForecast() {
       const response = await axios.get<IPastData>(url, { cancelToken: source.token });
 
       dispatch({
-        type: FETCH_PAST_FORECAST,
+        type: PastData.FETCH_PAST_FORECAST,
         data: response.data
       });
 
       dispatch(hideLoaderPast());
 
-    } catch (thrown) {
+    } catch (thrown:any) {
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */

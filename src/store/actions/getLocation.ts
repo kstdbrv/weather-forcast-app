@@ -1,11 +1,12 @@
-import { GET_LOCATION } from './actionTypes';
+import { PastCard } from '../../types/pastCard';
 import { fetchPastForecast } from './getWeather';
 
-export function getLocation(lat, lon) {
+
+export function getLocation(lat: string, lon: string) {
 
   return dispatch => {
     dispatch({
-      type: GET_LOCATION,
+      type: PastCard.GET_LOCATION,
       cityLocation: { lat, lon }
     });
     dispatch(fetchPastForecast());

@@ -1,27 +1,26 @@
-import { IStateLoading, IAppAction } from '../../types/app';
 import {
-  SHOW_LOADER_FORECAST, HIDE_LOADER_PAST,
-  HIDE_LOADER_FORECAST, SHOW_LOADER_PAST,
-} from '../actions/actionTypes';
+  IStateLoading,
+  LoaderStatus, AppAction
+} from '../../types/app';
 
 
 let initialState:IStateLoading = {
-  loading7DaysForecast: false,
-  loadingPastForecast: false,
+  loadingForecast: false,
+  loadingPast: false,
 }
 
 const appReducer = (
-  state = initialState, action: IAppAction
+  state = initialState, action: AppAction
 ): IStateLoading => {
   switch (action.type) {
-    case SHOW_LOADER_FORECAST:
-      return { ...state, loading7DaysForecast: true }
-    case HIDE_LOADER_FORECAST:
-      return { ...state, loading7DaysForecast: false }
-    case SHOW_LOADER_PAST:
-      return { ...state, loadingPastForecast: true }
-    case HIDE_LOADER_PAST:
-      return { ...state, loadingPastForecast: false }
+    case LoaderStatus.SHOW_LOADER_FORECAST:
+      return { ...state, loadingForecast: true }
+    case LoaderStatus.HIDE_LOADER_FORECAST:
+      return { ...state, loadingForecast: false }
+    case LoaderStatus.SHOW_LOADER_PAST:
+      return { ...state, loadingPast: true }
+    case LoaderStatus.HIDE_LOADER_PAST:
+      return { ...state, loadingPast: false }
     default: return state
   }
 }

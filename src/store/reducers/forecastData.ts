@@ -1,10 +1,15 @@
-import { FETCH_7DAYSFORECAST } from '../actions/actionTypes';
+import {
+  Days7Forecast,
+  Days7ForecastAction
+} from '../../types/forecastData';
+
 
 let initialState = {};
 
-const forecastDataReducer = (state = initialState, action) => {
+const forecastDataReducer = (
+  state = initialState, action: Days7ForecastAction) => {
   switch (action.type) {
-    case FETCH_7DAYSFORECAST:
+    case Days7Forecast.FETCH_7DAYSFORECAST:
       return action.data;
     default: return state;
   }

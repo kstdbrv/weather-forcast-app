@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { getDate, getTemp  } from '../../utils/utils';
+import { useSelector } from 'react-redux';
+import { getDate } from '../../utils/getDate';
 import './unit-forecast.scss';
 import { IForecastData } from '../../types/forecastData';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface IunitProps {
-  currentShowCards: IForecastData[]
+  data: IForecastData[]
 };
 
 interface IRootState {
@@ -16,27 +16,27 @@ interface IRootState {
 
 const UnitForecast: FC<IunitProps> = props => {
   
-  let forecastData = useTypedSelector((state: IRootState) => state.forecastData);
-  let forecastDataToShow;
+  let data = useSelector((state: IRootState) => state.forecastData);
+  let forecastData;
 
-  if (window.screen.width > 768 && !!props.currentShowCards.length) {
+  if (window.screen.width > 768 && !!props.data.length) {
       
-    forecastDataToShow = props.currentShowCards;
+    forecastData = props.data;
   } else if (window.screen.width < 768) {
     
-    forecastDataToShow = forecastData.daily;
+     forecastData = data.daily;
   } else {
     
       const cards = [0, 1, 2];
-      forecastDataToShow = cards.map(card => {
-        return forecastData.daily[card]
+      forecastData = cards.map(card => {
+        return data.daily[card]
       }); 
     };
   
-  return forecastDataToShow.map(day => {
+  return forecastData.map(day => {
  
     const date:string = getDate(day.dt);
-    const temp:string = getTemp(day.temp.eve);
+    const temp:number = Math.round(day.temp.eve);
     return (
         <div 
         key={ day.dt }
@@ -61,7 +61,7 @@ const UnitForecast: FC<IunitProps> = props => {
         }
           <div className="unit-forecast__tmp">
             <span className="unit-forecast__num">
-              { temp }
+              { temp >= 0 ? `+${temp}` : temp }
             </span>
             <span>°</span>
           </div>

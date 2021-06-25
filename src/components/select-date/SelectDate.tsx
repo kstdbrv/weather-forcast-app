@@ -1,15 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import './select-date.scss';
 import { useDispatch } from 'react-redux';
 import { getDate } from '../../store/actions/getDate';
 import { fetchPastForecast } from '../../store/actions/getWeather';
-import { ICardInfo } from '../../types/app'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
 const SelectDate:React.FC = () => {
 
-  const data = useSelector((state: ICardInfo) => state.pastCardInfo.unixDate);
+  const data = useTypedSelector((state) => state.pastCardInfo.unixDate);
   
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
