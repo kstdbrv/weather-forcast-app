@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getDate } from '../../store/actions/getDate';
 import { fetchPastForecast } from '../../store/actions/getWeather';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import fiveDaysAgo from '../../utils/to5DaysAgo';
 
 
 const SelectDate:React.FC = () => {
@@ -66,7 +67,9 @@ const SelectDate:React.FC = () => {
         className={ cls.join(' ').trim() }
         type="date"
         ref={ inputRef }
-        onChange={ handleChange }
+        onChange={handleChange}
+        min={fiveDaysAgo}
+        max={new Date().toJSON().slice(0,10)}
       />
       <p className="select-past__placeholder">
         Select date
