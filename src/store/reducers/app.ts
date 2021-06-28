@@ -5,8 +5,8 @@ import {
 
 
 let initialState:IStateLoading = {
-  loadingForecast: false,
-  loadingPast: false,
+  loading7DaysForecast: false,
+  loadingPastForecast: false,
 }
 
 const appReducer = (
@@ -14,13 +14,13 @@ const appReducer = (
 ): IStateLoading => {
   switch (action.type) {
     case LoaderStatus.SHOW_LOADER_FORECAST:
-      return { ...state, loadingForecast: true }
+      return { ...state, loading7DaysForecast: true }
     case LoaderStatus.HIDE_LOADER_FORECAST:
-      return { ...state, loadingForecast: false }
+      return { ...state, loading7DaysForecast: false }
     case LoaderStatus.SHOW_LOADER_PAST:
-      return { ...state, loadingPast: true }
+      return { ...state, loadingPastForecast: true }
     case LoaderStatus.HIDE_LOADER_PAST:
-      return { ...state, loadingPast: false }
+      return { ...state, loadingPastForecast: false }
     default: return state
   }
 }

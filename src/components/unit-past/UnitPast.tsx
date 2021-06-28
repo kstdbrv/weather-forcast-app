@@ -11,11 +11,11 @@ interface IPastState {
 
 const UnitPast:React.FC = () => {
   
-  const data = useSelector((state: IPastState) => state.pastData);
+  const pastDataForecast = useSelector((state: IPastState) => state.pastData);
 
-  const hourResult = data.hourly[11]; // 11:00
+  const hourResult = pastDataForecast.hourly[11]; // 11:00
 
-  const date:string = getDate(data.current.dt);
+  const date:string = getDate(pastDataForecast.current.dt);
   const temp:number = Math.round(hourResult.temp);
 
   return (

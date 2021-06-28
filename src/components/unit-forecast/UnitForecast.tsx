@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import { getDate } from '../../utils/getDate';
 import './unit-forecast.scss';
 import { IForecastData } from '../../types/forecastData';
+import { useSelector } from 'react-redux';
+
 
 interface IunitProps {
-  data: IForecastData[]
+  currentShowCards: IForecastData[]
 };
 
 interface IRootState {
@@ -16,24 +17,24 @@ interface IRootState {
 
 const UnitForecast: FC<IunitProps> = props => {
   
-  let data = useSelector((state: IRootState) => state.forecastData);
-  let forecastData;
+  let forecastData = useSelector((state: IRootState) => state.forecastData);
+  let forecastDataToShow;
 
-  if (window.screen.width > 768 && !!props.data.length) {
+  if (window.screen.width > 768 && !!props.currentShowCards.length) {
       
-    forecastData = props.data;
+    forecastDataToShow = props.currentShowCards;
   } else if (window.screen.width < 768) {
     
-     forecastData = data.daily;
+    forecastDataToShow = forecastData.daily;  
   } else {
     
-      const cards = [0, 1, 2];
-      forecastData = cards.map(card => {
-        return data.daily[card]
+      const cards:number[] = [0, 1, 2];
+      forecastDataToShow = cards.map(card => {
+        return forecastData.daily[card]
       }); 
     };
   
-  return forecastData.map(day => {
+    return forecastDataToShow.map(day => {
  
     const date:string = getDate(day.dt);
     const temp:number = Math.round(day.temp.eve);
