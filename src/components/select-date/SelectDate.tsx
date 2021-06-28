@@ -1,15 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import './select-date.scss';
-import { useDispatch } from 'react-redux';
-import { getDate } from '../../store/actions/getDate';
-import { fetchPastForecast } from '../../store/actions/getWeather';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import fiveDaysAgo from '../../utils/to5DaysAgo';
+import { useActions } from '../../hooks/useActions';
 
 
 const SelectDate:React.FC = () => {
 
-  const data = useTypedSelector((state) => state.pastCardInfo.unixDate);
+  const { unixDate } = useTypedSelector((state) => state.pastCardInfo);
   
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -29,7 +27,7 @@ const SelectDate:React.FC = () => {
 
     input!.addEventListener('focus', addClass);
 
-    if (!data) {
+    if (!unixDate) {
       input!.addEventListener('blur', removeClass);
     }
     
@@ -38,24 +36,24 @@ const SelectDate:React.FC = () => {
       input!.removeEventListener('blur', removeClass);
     }
 
-  }, [data]);
+  }, [unixDate]);
 
-  const dispatch = useDispatch();
+  const { getDate, fetchPastForecast } = useActions();
 
-  const handleChange = e => {
+  const setDate = (e:React.ChangeEvent<HTMLInputElement>) => {
 
     const date = e.target.value;
     const unixDate = new Date(`${date}`).getTime() / 1000;
 
     if (unixDate > Date.now() / 1000) return;
 
-    dispatch(getDate(unixDate));
-    dispatch(fetchPastForecast());
+    getDate(unixDate);
+    fetchPastForecast();
   };
 
   const cls = [
     'select-past__date',
-    data === null ? null : 'select-past__date--active',
+    unixDate === null ? null : 'select-past__date--active',
   ];
 
   return (
@@ -67,7 +65,7 @@ const SelectDate:React.FC = () => {
         className={ cls.join(' ').trim() }
         type="date"
         ref={ inputRef }
-        onChange={handleChange}
+        onChange={setDate}
         min={fiveDaysAgo}
         max={new Date().toJSON().slice(0,10)}
       />
