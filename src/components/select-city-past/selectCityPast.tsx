@@ -16,7 +16,8 @@ const SelectCityPast:React.FC = () => {
   const dispatch = useDispatch();
   const cityLocation = useTypedSelector((state) => state.pastCardInfo.cityLocation);
 
-  const setCityLocation = e => { 
+  const setCityLocation = e => {
+    /* eslint-disable */
     let longitude: SelectLon = '';
     let latitude: SelectLat = e.target.value;
     switch (latitude) {

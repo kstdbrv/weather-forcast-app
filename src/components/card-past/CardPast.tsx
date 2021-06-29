@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Loader from '../loader/Loader';
-import SelectCityPast from '../select-city-past/SelectCityPast';
+import SelectCityPast from '../select-city-past/selectCityPast';
 import SelectDate from '../select-date/SelectDate';
 import UnitPast from '../unit-past/UnitPast';
 import Placeholder from '../placeholder/Placeholder'

@@ -14,7 +14,8 @@ const SelectCity = ({ forecast7DaysData }) => {
 
   const dispatch = useDispatch();
 
-  const setCityLocation = e => { 
+  const setCityLocation = e => {
+    /* eslint-disable */
     let longitude: SelectLon = '';
     let latitude: SelectLat = e.target.value;
     switch (latitude) {
