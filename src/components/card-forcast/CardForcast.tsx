@@ -77,14 +77,14 @@ const CardForcast: React.FC = () => {
             <div className="card-forcast__wrapper">
               <div className="card-forcast__overflow">
               <UnitForecast currentShowCards={ currentShowCards } />
-                <div
+                <button
                   className={ clsPrev.join(' ').trim() }
                   onClick={ setPrevCards }
-                ></div>
-                <div
+                />
+                <button
                   className={ clsNext.join(' ').trim() }
                   onClick={ setNextCards }
-                ></div>
+                />
               </div>
             </div>
             : <Placeholder />
