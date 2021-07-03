@@ -1,21 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import './card-forcast.scss';
 import SelectCity from '../select-city/SelectCity';
 import Loader from '../loader/Loader';
 import UnitForecast from '../unit-forecast/UnitForecast';
 import Placeholder from '../placeholder/Placeholder';
 import { IForecastData } from '../../types/forecastData';
-import { IStateLoading } from '../../types/app';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useSelector } from 'react-redux';
 
 
 const CardForcast: React.FC = () => {
 
-  interface IApp {
-    app: IStateLoading
-  };
-
-  const { loading7DaysForecast } = useSelector((state:IApp) => state.app);
+  const { loading7DaysForecast } = useTypedSelector((state) => state.app);
   const forecast7DaysData = useSelector((state: any) => state.forecastData);
 
   const cardsToShow = useRef<number[]>([0, 1, 2]);
@@ -73,7 +69,7 @@ const CardForcast: React.FC = () => {
       <SelectCity forecast7DaysData={ forecast7DaysData } />
       {
         loading7DaysForecast ? <Loader /> :
-        forecast7DaysData.hourly ?
+        forecast7DaysData.daily ?
             <div className="card-forcast__wrapper">
               <div className="card-forcast__overflow">
               <UnitForecast currentShowCards={ currentShowCards } />
