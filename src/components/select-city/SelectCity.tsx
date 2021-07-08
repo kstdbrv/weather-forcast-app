@@ -2,11 +2,44 @@ import './select-city.scss';
 import { CITIES } from '../../cities/cities';
 import { useActions } from '../../hooks/useActions';
 import positionError from '../../utils/positionError';
+import { useEffect } from 'react';
 
 
 const SelectCity = ({ forecast7DaysData }) => {
 
+  useEffect(() => {
+    setGeoHandler();
+    getIncomeLocation();
+  }, []);
+  
+
   const { fetch7DayForecast } = useActions();
+
+  function setGeoHandler(): void {
+    if ('registerProtocolHandler' in navigator) {
+      navigator.registerProtocolHandler(
+        'geo', '/weather-forecast/?geo=%s', 'Geo handler'
+      );
+    }
+  }
+
+  function getIncomeLocation(): void {
+    window.addEventListener('load', () => {
+      const url = new URL(window.location.toString());
+      const { searchParams } = url;
+      const geoData = searchParams.get('geo')?.toString();
+      try {
+        if (geoData) {
+          const incomeLocation = geoData.split(':')[1]?.split(',');
+          const latitude = parseFloat(incomeLocation[0]).toString();
+          const longitude = parseFloat(incomeLocation[1]).toString();
+          fetch7DayForecast(latitude, longitude);
+        }
+      } catch(error) {
+        console.error(error.message);
+      }
+    });
+  }
 
   const geoOptions:PositionOptions = {
     enableHighAccuracy: true, 

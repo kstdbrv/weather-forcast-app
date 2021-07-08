@@ -5,7 +5,7 @@ import { useActions } from '../../hooks/useActions';
 import positionError from '../../utils/positionError';
 
 
-const SelectCityPast:React.FC = () => {
+const SelectCityPast: React.FC = () => {
 
   const { getLocation } = useActions();
   const cityLocation = useTypedSelector((state) => state.pastCardInfo.cityLocation);
