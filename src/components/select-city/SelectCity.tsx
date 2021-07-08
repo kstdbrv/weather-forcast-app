@@ -15,15 +15,15 @@ const SelectCity = ({ forecast7DaysData }) => {
 
   const { fetch7DayForecast } = useActions();
 
-  function setGeoHandler(): void {
+  const setGeoHandler = (): void => {
     if ('registerProtocolHandler' in navigator) {
       navigator.registerProtocolHandler(
-        'geo', '/weather-forecast/?geo=%s', 'Geo handler'
+        'geo', '/weather-forecast/?geo=%s', 'Geo-handler'
       );
     }
   }
 
-  function getIncomeLocation(): void {
+  const getIncomeLocation = (): void => {
     window.addEventListener('load', () => {
       const url = new URL(window.location.toString());
       const { searchParams } = url;
