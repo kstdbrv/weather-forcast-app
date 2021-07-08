@@ -35,5 +35,11 @@
       "sizes": "410x320",
       "type": "image/webp"
     }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "geo",
+      "url": "/weather-forecast-app/?geo=%s"
+    }
   ]
 }
