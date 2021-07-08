@@ -2,23 +2,40 @@ import './select-city-past.scss';
 import { CITIES } from '../../cities/cities';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import positionError from '../../utils/positionError';
 
-
-type SelectLat = '53.195873' | '53.507836' |
-  '51.533557' | '55.796127' | '45.035470';
-                      
-type SelectLon = '50.100193' | '49.420393' |
-  '46.034257' | '49.106405' | '38.975313' | '';
 
 const SelectCityPast:React.FC = () => {
 
   const { getLocation } = useActions();
   const cityLocation = useTypedSelector((state) => state.pastCardInfo.cityLocation);
 
+  const geoOptions:PositionOptions = {
+    enableHighAccuracy: true, 
+    timeout: 1500,
+    maximumAge: 0,
+  }
+
+  const setCurrentPosition = (position: GeolocationPosition): void => {
+    const latitude = position.coords.latitude.toString(); 
+    const longitude = position.coords.longitude.toString();
+    getLocation(latitude, longitude);
+  }
+
   const setCityLocation = e => {
+    if (e.target.value === 'current') {
+      const handleCurrentLocation = () => {
+        if (navigator.geolocation) { 
+          navigator.geolocation.getCurrentPosition(
+            setCurrentPosition, positionError, geoOptions
+          );
+        } 
+      }
+      handleCurrentLocation();
+    }
     /* eslint-disable */
-    let longitude: SelectLon = '';
-    let latitude: SelectLat = e.target.value;
+    let longitude = '';
+    let latitude = e.target.value;
     switch (latitude) {
      case '53.195873': // Самара
         return getLocation(latitude, longitude = '50.100193');

@@ -1,6 +1,9 @@
 interface ICities {
-  name: 'Select city' | 'Самара' | 'Тольятти' | 'Саратов' | 'Казань' | 'Краснодар',
-  lat?: '53.195873' | '53.507836' | '51.533557' | '55.796127' | '45.035470',
+  name: 'Select city' | 'Самара' | 'Тольятти'
+        | 'Саратов' | 'Казань'
+        | 'Краснодар' | 'Сurrent location'
+  lat?: '53.195873' | '53.507836' | '51.533557'
+      | '55.796127' | '45.035470' | 'current'
   disabled?: boolean,
   hidden?:boolean
 };
@@ -12,4 +15,5 @@ export const CITIES: ICities[] = [
   { name: 'Саратов', lat: '51.533557' },
   { name: 'Казань', lat: '55.796127' },
   { name: 'Краснодар', lat: '45.035470' },
+  { name: 'Сurrent location', lat: 'current' },
 ];

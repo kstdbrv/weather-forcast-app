@@ -9,20 +9,14 @@ import {
 } from './app';
 
 
-type SelectLat = '53.195873' | '53.507836' |
-  '51.533557' | '55.796127' | '45.035470';
-
-type SelectLon = '50.100193' | '49.420393' |
-  '46.034257' | '49.106405' | '38.975313' | '';
-
-type SityLocation = {
-  lat: SelectLat,
-  lon: SelectLon
-};
-
 type ServerError = {
   code: number;
   message: string;
+};
+
+type SityLocation = {
+  lat: string,
+  lon: string
 };
   
 const isServerError = (error: any): error is ServerError => {
@@ -44,7 +38,7 @@ const validateThrown = (something: string | ServerError): void => {
 
 const API_KEY = process.env.REACT_APP_API_REY;
 
-export function fetch7DayForecast(lat:SelectLat, lon:SelectLon, part:string = '') {
+export function fetch7DayForecast(lat: string, lon: string, part:string = '') {
 
   return async dispatch => {
     try {
