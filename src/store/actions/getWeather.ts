@@ -9,17 +9,52 @@ import {
 } from './app';
 
 
+type SelectLat = '53.195873' | '53.507836' |
+  '51.533557' | '55.796127' | '45.035470';
+
+type SelectLon = '50.100193' | '49.420393' |
+  '46.034257' | '49.106405' | '38.975313' | '';
+
+type SityLocation = {
+  lat: SelectLat,
+  lon: SelectLon
+};
+
+type ServerError = {
+  code: number;
+  message: string;
+};
+  
+const isServerError = (error: any): error is ServerError => {
+  if (!error) return false; // null, undefined, ''
+  
+  const codeIsCorrect = typeof error.code === 'number';
+  const messageIsCorrect = typeof error.message === 'string';
+  
+  return codeIsCorrect && messageIsCorrect;
+};
+
+const validateThrown = (something: string | ServerError): void => {
+  if (isServerError(something)) {
+    console.error(`Error code: ${something.code}, message: ${something.message}`);
+  } else {
+    console.log('something is not an server error');
+  }
+};
+
 const API_KEY = process.env.REACT_APP_API_REY;
 
-export function fetch7DayForecast(lat, lon, part = '') {
+export function fetch7DayForecast(lat:SelectLat, lon:SelectLon, part:string = '') {
 
   return async dispatch => {
     try {
 
       dispatch(showLoaderForcast());
 
-      const url = `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=metric&appid=${API_KEY}`;
-      const response = await axios.get<IForecastData[]>(url, { cancelToken: source.token });
+      const url: string =
+        `/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=metric&appid=${API_KEY}`;
+      const response =
+        await axios.get<IForecastData[]>(url, { cancelToken: source.token });
 
       dispatch({
         type: Days7Forecast.FETCH_7DAYSFORECAST,
@@ -28,7 +63,8 @@ export function fetch7DayForecast(lat, lon, part = '') {
 
       dispatch(hideLoaderForcast());
 
-    } catch (thrown:any) {
+    } catch (thrown: any) {
+      validateThrown(thrown);
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */
@@ -47,8 +83,8 @@ export function fetchPastForecast() {
 
     const { pastCardInfo } = getState();
     
-    let unixDate = pastCardInfo.unixDate;
-    let cityLocation = pastCardInfo.cityLocation;
+    let unixDate:number | null = pastCardInfo.unixDate;
+    let cityLocation:SityLocation | null = pastCardInfo.cityLocation;
 
     if (unixDate === null || cityLocation === null) return;
     
@@ -57,7 +93,8 @@ export function fetchPastForecast() {
     try {
       dispatch(showLoaderPast());
 
-      const url = `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}`;
+      const url: string =
+        `/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixDate}&units=metric&appid=${API_KEY}`;
       const response = await axios.get<IPastData>(url, { cancelToken: source.token });
 
       dispatch({
@@ -67,7 +104,8 @@ export function fetchPastForecast() {
 
       dispatch(hideLoaderPast());
 
-    } catch (thrown:any) {
+    } catch (thrown: any) {
+      validateThrown(thrown);
       if (isCancel(thrown)) {
         console.log('Request canceled', thrown.message);
         /* dispatch(showAlert('Что-то пошло не так...', 'danger')) */

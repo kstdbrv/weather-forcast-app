@@ -1,6 +1,6 @@
 interface ICities {
-  name: string,
-  lat?: string,
+  name: 'Select city' | 'Самара' | 'Тольятти' | 'Саратов' | 'Казань' | 'Краснодар',
+  lat?: '53.195873' | '53.507836' | '51.533557' | '55.796127' | '45.035470',
   disabled?: boolean,
   hidden?:boolean
 };
