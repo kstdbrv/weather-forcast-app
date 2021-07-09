@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.web.wether_forecast_pwa.twa",
+    "sha256_cert_fingerprints": [
+      "2F:88:46:4D:4D:42:5B:3F:B6:40:85:9C:AB:CF:66:05:6D:11:32:A0:70:54:5A:E0:39:3E:18:F6:B5:A5:CC:3C"
+    ]
+  }
+}]

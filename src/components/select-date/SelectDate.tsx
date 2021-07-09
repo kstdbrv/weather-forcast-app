@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './select-date.scss';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import fiveDaysAgo from '../../utils/to5DaysAgo';
+import oneDayAgo from '../../utils/to1DayAgo';
 import { useActions } from '../../hooks/useActions';
 
 
@@ -67,7 +68,7 @@ const SelectDate:React.FC = () => {
         ref={ inputRef }
         onChange={setDate}
         min={fiveDaysAgo}
-        max={new Date().toJSON().slice(0,10)}
+        max={oneDayAgo}
       />
       <p className="select-past__placeholder">
         Select date

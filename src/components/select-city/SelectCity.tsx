@@ -1,22 +1,72 @@
 import './select-city.scss';
 import { CITIES } from '../../cities/cities';
 import { useActions } from '../../hooks/useActions';
+import positionError from '../../utils/positionError';
+import { useEffect } from 'react';
 
-
-type SelectLat = '53.195873' | '53.507836' |
-  '51.533557' | '55.796127' | '45.035470';
-
-type SelectLon = '50.100193' | '49.420393' |
-  '46.034257' | '49.106405' | '38.975313' | '';
 
 const SelectCity = ({ forecast7DaysData }) => {
 
+  useEffect(() => {
+    setGeoHandler();
+    getIncomeLocation();
+  }, []);
+  
+
   const { fetch7DayForecast } = useActions();
 
+  const setGeoHandler = (): void => {
+    if ('registerProtocolHandler' in navigator) {
+      navigator.registerProtocolHandler(
+        'geo', '/weather-forecast/?geo=%s', 'Geo-handler'
+      );
+    }
+  }
+
+  const getIncomeLocation = (): void => {
+    window.addEventListener('load', () => {
+      const parsedUrl = new URL(window.location.toString());
+      const { searchParams } = parsedUrl;
+      const geoData = searchParams.get('geo')?.toString();
+      try {
+        if (geoData) {
+          const incomeLocation = geoData.split(':')[1]?.split(',');
+          const latitude = parseFloat(incomeLocation[0]).toString();
+          const longitude = parseFloat(incomeLocation[1]).toString();
+          fetch7DayForecast(latitude, longitude);
+        }
+      } catch(error) {
+        console.error(error.message);
+      }
+    });
+  }
+
+  const geoOptions:PositionOptions = {
+    enableHighAccuracy: true, 
+    timeout: 1500,
+    maximumAge: 0,
+  }
+
+  const setCurrentPosition = (position: GeolocationPosition): void => {
+    const latitude = position.coords.latitude.toString(); 
+    const longitude = position.coords.longitude.toString();
+    fetch7DayForecast(latitude, longitude);
+  }
+
   const setCityLocation = e => {
+    if (e.target.value === 'current') {
+      const handleCurrentLocation = () => {
+        if (navigator.geolocation) { 
+          navigator.geolocation.getCurrentPosition(
+            setCurrentPosition, positionError, geoOptions
+          );
+        } 
+      }
+      handleCurrentLocation();
+    }
     /* eslint-disable */
-    let longitude: SelectLon = '';
-    let latitude: SelectLat = e.target.value;
+    let longitude = '';
+    let latitude = e.target.value;
     switch (latitude) {
      case '53.195873': // Самара
       return fetch7DayForecast(latitude, longitude = '50.100193');
