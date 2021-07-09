@@ -25,8 +25,8 @@ const SelectCity = ({ forecast7DaysData }) => {
 
   const getIncomeLocation = (): void => {
     window.addEventListener('load', () => {
-      const url = new URL(window.location.toString());
-      const { searchParams } = url;
+      const parsedUrl = new URL(window.location.toString());
+      const { searchParams } = parsedUrl;
       const geoData = searchParams.get('geo')?.toString();
       try {
         if (geoData) {
